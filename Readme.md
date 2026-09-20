@@ -30,6 +30,7 @@ classDiagram
         +TextField description
         +PositiveIntegerField duration
         +DateField release_date
+        +URL movie_poster
     }
 
     class CinemaRoom {

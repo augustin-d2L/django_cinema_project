@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Film - {{ movie.title }}{% endblock %}
+
+{% block content %}
+
+    {% load static %}
+
+    <h2 class="text-3xl font-extrabold text-white mb-2">{{ movie.title }}</h2>
+
+    <img src="{{ movie.movie_poster }}" alt="{{ movie.title }}_poster">
+
+    <p class="text-gray-400 mb-10">{{ movie.description }}</p>
+
+    <p>durée = {{ movie.duration }}</p>
+
+    <p>date de sortie = {{ movie.release_date }}</p>
+
+    <p>genre(s) :</p>
+    {% if movie.genre.all %}
+        <ul>
+            {% for genre in movie.genre.all %}
+                <li>{{ genre.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>pas de genre</p>
+    {% endif %}
+
+{% endblock %}

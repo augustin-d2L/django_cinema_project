@@ -12,6 +12,7 @@ class Genre(models.Model):
         verbose_name = "genre"
         verbose_name_plural = "genres"
 
+
 class Movie(models.Model):
     title = models.CharField(max_length=100, verbose_name="Titre")
     description = models.TextField(verbose_name="Description")
@@ -28,6 +29,7 @@ class Movie(models.Model):
         verbose_name = "film"
         verbose_name_plural = "films"
 
+
 class CinemaRoom(models.Model):
     number = models.PositiveIntegerField(verbose_name="Numéro", unique=True)
     capacity = models.PositiveIntegerField(verbose_name="Capacité")
@@ -39,6 +41,7 @@ class CinemaRoom(models.Model):
         ordering = ('number', )
         verbose_name = "salle de cinéma"
         verbose_name_plural = "salles de cinéma"
+
 
 class Screening(models.Model): # Careful to not overlap 2 screenings in same room at same time
     movie = models.ForeignKey(Movie, verbose_name="Film", related_name='screenings', on_delete=models.CASCADE)
@@ -52,6 +55,7 @@ class Screening(models.Model): # Careful to not overlap 2 screenings in same roo
         ordering = ('screening_time', )
         verbose_name = "projection"
         verbose_name_plural = "projections"
+
 
 class Ticket(models.Model):
     class Status(models.TextChoices):

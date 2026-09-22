@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
-{% block title %}Movies{% endblock %}
+{% block title %}Films{% endblock %}
 
 {% block content %}
 
     {% load static %}
 
     <h2>Page de films</h2>
+    <!-- grid qvec chque element qui fqit 300 * 430 -->
+    {% for movie in page %}
+        <h2 class="text-3xl font-extrabold text-white mb-2">{{ movie.title }}</h2>
 
-    <p>rien à voir pour le moment</p>
+        <img src="{{ movie.movie_poster }}" alt="{{ movie.title }}_poster">
+    {% endfor %}
+
+    <!-- paginator -->
+    {% if page.has_previous %}
+       <a class="text-blue-600" href="?page={{ page.previous_page_number }}">Précedent</a>
+    {% else %}
+        <p>Précedent</p> 
+    {% endif %}
+
+    <p>{{ page.number }} sur {{ page.paginator.num_pages }}</p>
+
+    {% if page.has_next %}
+       <a class="text-blue-600" href="?page={{ page.next_page_number }}">Suivant</a>
+    {% else %}
+        <p>Suivant</p> 
+    {% endif %}
 
 {% endblock %}

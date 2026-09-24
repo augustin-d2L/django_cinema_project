@@ -1,18 +1,96 @@
 {% extends 'base.html' %}
-{% block title %}Accueil Cinéma{% endblock %}
+{% block title %}Réservation Cinéma{% endblock %}
 
 {% block content %}
 
     {% load static %}
 
-    <h2>reservation Cinéma</h2>
+<h2 class="text-3xl font-extrabold text-white mb-2">Réservation</h2>
+<p class="text-gray-400 mb-10">Remplissez le formulaire pour réserver votre séance.</p>
 
-    <p>ici formulaire complexe pour reserver une salle</p>
+<div class="max-w-2xl mx-auto bg-cinema-dark border border-white/10 rounded-xl p-8">
+    <form action="/reservation" method="post" class="space-y-5">
+        {% csrf_token %}
 
-    <form action="/reservation" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Envoyer">
-        </form>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                    {{ form.first_name.label }}
+                </label>
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                <p class="text-red-400 text-xs mt-1">{{ form.first_name.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                    {{ form.last_name.label }}
+                </label>
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                <p class="text-red-400 text-xs mt-1">{{ form.last_name.errors.0 }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div>
+            <label for="{{ form.email_address.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                {{ form.email_address.label }}
+            </label>
+            {{ form.email_address }}
+            {% if form.email_address.errors %}
+            <p class="text-red-400 text-xs mt-1">{{ form.email_address.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="{{ form.film.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                {{ form.film.label }}
+            </label>
+            {{ form.film }}
+            {% if form.film.errors %}
+            <p class="text-red-400 text-xs mt-1">{{ form.film.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="{{ form.room.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                {{ form.room.label }}
+            </label>
+            {{ form.room }}
+            {% if form.room.errors %}
+            <p class="text-red-400 text-xs mt-1">{{ form.room.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label for="{{ form.date.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                    {{ form.date.label }}
+                </label>
+                {{ form.date }}
+                {% if form.date.errors %}
+                <p class="text-red-400 text-xs mt-1">{{ form.date.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="{{ form.hour.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
+                    {{ form.hour.label }}
+                </label>
+                {{ form.hour }}
+                {% if form.hour.errors %}
+                <p class="text-red-400 text-xs mt-1">{{ form.hour.errors.0 }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <button type="submit"
+                class="w-full py-2.5 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors mt-2">
+            Confirmer la réservation
+        </button>
+    </form>
+</div>
 
 {% endblock %}

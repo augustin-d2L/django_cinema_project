@@ -6,6 +6,11 @@ from django.contrib import messages
 from .models import * # a changer
 from .forms import ContactForm, ReservationForm
 
+#TODO : être authentifié pour faire une reservation utilisation de User
+#TODO : quand on clique sur reserver depuis un film on préremplis le formulaire avec lui
+#TODO : mettre try except pour chaque interaction DB
+#TODO movieView : si le film n'existe pas erreur releve utiliser try except DoesNotExist 
+
 class IndexView(View):
     def get(self, request):
         return render(request, 'cinema_app/index.html')
@@ -16,7 +21,7 @@ class ReservationView(View):
         form = ReservationForm()
         return render(request, 'cinema_app/reservation.html', {'form': form})
 
-    def post(self, request):# la reservation crée une projection
+    def post(self, request):
         form = ReservationForm(request.POST)
         if form.is_valid():
             form = form.cleaned_data
@@ -60,5 +65,5 @@ class MovieView(View):
     model = Movie
 
     def get(self, request, pk):
-        movie = Movie.objects.prefetch_related('genre').get(pk=pk) # si le film n'existe pas erreur releve utiliser try except DoesNotExist 
+        movie = Movie.objects.prefetch_related('genre').get(pk=pk) 
         return render(request, 'cinema_app/movie.html', {'movie': movie})

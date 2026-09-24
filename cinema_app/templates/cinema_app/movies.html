@@ -15,7 +15,7 @@
 
     <!-- paginator -->
     {% if page.has_previous %}
-       <a class="text-blue-600" href="?page={{ page.previous_page_number }}">Précedent</a>
+       <a href="?page={{ page.previous_page_number }}">Précedent</a>
     {% else %}
         <p>Précedent</p> 
     {% endif %}
@@ -23,7 +23,7 @@
     <p>{{ page.number }} sur {{ page.paginator.num_pages }}</p>
 
     {% if page.has_next %}
-       <a class="text-blue-600" href="?page={{ page.next_page_number }}">Suivant</a>
+       <a href="?page={{ page.next_page_number }}">Suivant</a>
     {% else %}
         <p>Suivant</p> 
     {% endif %}

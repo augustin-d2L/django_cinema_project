@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Accueil Cinéma{% endblock %}
+
+{% block content %}
+
+    {% load static %}
+
+    <h2>reservation Cinéma</h2>
+
+    <p>ici formulaire complexe pour reserver une salle</p>
+
+    <form action="/reservation" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Envoyer">
+        </form>
+
+{% endblock %}

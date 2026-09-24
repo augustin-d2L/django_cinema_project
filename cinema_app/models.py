@@ -35,7 +35,7 @@ class CinemaRoom(models.Model):
     capacity = models.PositiveIntegerField(verbose_name="Capacité")
 
     def __str__(self):
-        return str(self.number)
+        return str(f"{self.number} - Capacité de {self.capacity}")
 
     class Meta:
         ordering = ('number', )
@@ -79,3 +79,16 @@ class Ticket(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['screening', 'seat_number'], name='unique_seat_per_screening')
         ]
+
+
+class ContactMessage(models.Model):
+    email_address = models.EmailField(verbose_name="Courriel")
+    message_content = models.CharField(max_length=500, verbose_name="Contenu")
+
+    def __str__(self):
+            return f"Message de - {self.email_address}"
+
+    class Meta:
+            ordering = ('email_address', )
+            verbose_name = "message"
+            verbose_name_plural = "messages"

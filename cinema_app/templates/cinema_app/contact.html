@@ -60,10 +60,11 @@
         <p class="text-gray-400 text-sm mb-4">
             Écrivez-nous directement par courriel et nous vous répondrons dans les plus brefs délais.
         </p>
-        <a href="mailto:info@fauxcinema.ca"
-           class="px-5 py-2.5 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
-            Nous écrire
-        </a>
+        <form action="/contact" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Envoyer">
+        </form>
     </div>
 
 </div>

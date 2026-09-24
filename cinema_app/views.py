@@ -1,17 +1,48 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 #from django.http import Http404 voir demo_app
 from django.views.generic.base import View
 from django.core.paginator import Paginator
-from .models  import * # a changer
+from django.contrib import messages
+from .models import * # a changer
+from .forms import ContactForm, ReservationForm
 
 class IndexView(View):
     def get(self, request):
         return render(request, 'cinema_app/index.html')
 
 
+class ReservationView(View):
+    def get(self, request):
+        form = ReservationForm()
+        return render(request, 'cinema_app/reservation.html', {'form': form})
+
+    def post(self, request):# la reservation crée une projection
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form = form.cleaned_data
+            #TODO creer la projection
+
+            messages.add_message(request, messages.SUCCESS, "Réservation bien effectuée")
+            return redirect('index')
+
+        return render(request, 'cinema_app/reservation.html', {'form': form})
+
 class ContactView(View):
     def get(self, request):
-        return render(request, 'cinema_app/contact.html')
+        form = ContactForm()
+        return render(request, 'cinema_app/contact.html', {'form': form})
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form = form.cleaned_data
+            contact_message = ContactMessage(email_address=form['email_address'], message_content=form['message_content'])
+            contact_message.save()
+
+            messages.add_message(request, messages.SUCCESS, "Message bien envoyé")
+            return redirect('contact')
+
+        return render(request, 'cinema_app/contact.html', {'form': form})
 
 
 class MoviesView(View):

@@ -92,3 +92,19 @@ class ContactMessage(models.Model):
             ordering = ('email_address', )
             verbose_name = "message"
             verbose_name_plural = "messages"
+
+
+class Reservation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reservations')
+    film = models.ForeignKey('Movie', on_delete=models.CASCADE)
+    room = models.ForeignKey('CinemaRoom', on_delete=models.CASCADE)
+    date = models.DateField()
+    hour = models.CharField(max_length=5)  # ex. "15:00"
+    date_creation = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.film.title} - {self.date} {self.hour}"
+
+    def is_past(self):
+        import datetime
+        return self.date < datetime.date.today()

@@ -18,11 +18,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.auth import views as auth_views
+from cinema_app.forms import LoginForm
 
 urlpatterns = [
-    path('', include('cinema_app.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/login/', auth_views.LoginView.as_view(
+        template_name='registration/login.html',
+        authentication_form=LoginForm
+    ), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('cinema_app.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

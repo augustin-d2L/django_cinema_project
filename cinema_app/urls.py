@@ -11,5 +11,5 @@ urlpatterns = [
     path('movie/<int:pk>', views.MovieView.as_view(), name='movie'),
     path('inscription', views.RegisterView.as_view(), name='register'),
     path('compte', views.AccountView.as_view(), name='account'),
-    path('compte/reservation/<int:pk>/supprimer', views.DeleteReservationView.as_view(), name='delete_reservation'),
+    path('compte/reservation/<int:pk>/supprimer', views.DeleteTicketView.as_view(), name='delete_reservation'),
 ]

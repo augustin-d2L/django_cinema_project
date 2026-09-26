@@ -47,25 +47,26 @@
         </form>
     </div>
 
-    <!-- Liste des réservations -->
+    <!-- Liste des réservations (billets) -->
     <div class="bg-cinema-dark border border-white/10 rounded-xl p-6">
         <h3 class="text-white font-semibold text-lg mb-4">
             <i class="fa-solid fa-ticket text-cinema-red mr-2"></i>Mes réservations
         </h3>
 
-        {% if reservations %}
+        {% if tickets %}
         <div class="space-y-3">
-            {% for res in reservations %}
+            {% for ticket in tickets %}
             <div class="flex items-center justify-between bg-white/5 rounded-md px-4 py-3">
                 <div>
-                    <p class="text-white font-medium">{{ res.film.title }}</p>
+                    <p class="text-white font-medium">{{ ticket.screening.movie.title }}</p>
                     <p class="text-gray-400 text-xs">
-                        {{ res.date|date:"d/m/Y" }} à {{ res.hour }} — Salle {{ res.room }}
+                        {{ ticket.screening.screening_time|date:"d/m/Y H:i" }} — Salle {{ ticket.screening.cinema_room.number }} — Siège {{ ticket.seat_number }}
                     </p>
+                    <p class="text-gray-500 text-xs">{{ ticket.get_status_display }} — {{ ticket.price }} $</p>
                 </div>
 
-                {% if not res.is_past %}
-                <a href="{% url 'delete_reservation' res.id %}"
+                {% if ticket.screening.screening_time > now %}
+                <a href="{% url 'delete_reservation' ticket.id %}"
                    class="text-red-400 hover:text-red-300 text-sm">
                     <i class="fa-solid fa-trash"></i>
                 </a>

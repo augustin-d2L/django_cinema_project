@@ -1,8 +1,9 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Reservation
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Movie, CinemaRoom
+from django.contrib.auth.forms import AuthenticationForm
 
 import datetime
 
@@ -27,7 +28,7 @@ class ContactForm(forms.Form):
     )
 
 
-class ReservationForm(forms.ModelForm):
+class ReservationForm(forms.Form):
     hour = forms.ChoiceField(
         label="Heure",
         choices=HEURE_CHOICES,
@@ -35,28 +36,50 @@ class ReservationForm(forms.ModelForm):
             'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
         })
     )
-
-    class Meta:
-        model = Reservation
-        fields = ['film', 'room', 'date', 'hour']
-        widgets = {
-            'film': forms.Select(attrs={
-                'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
-            }),
-            'room': forms.Select(attrs={
-                'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
-            }),
-            'date': forms.DateInput(attrs={
-                'type': 'date',
-                'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
-            }),
-        }
+    film = forms.ModelChoiceField(
+        label="Film",
+        queryset=Movie.objects.all(),
+        widget=forms.Select(attrs={
+            'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
+        })
+    )
+    room = forms.ModelChoiceField(
+        label="Salle",
+        queryset=CinemaRoom.objects.all(),
+        widget=forms.Select(attrs={
+            'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
+        })
+    )
+    date = forms.DateField(
+        label="Date",
+        widget=forms.DateInput(attrs={
+            'type': 'date',
+            'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
+        })
+    )
+    seat_number = forms.CharField(
+        label="Numéro de siège",
+        max_length=10,
+        widget=forms.TextInput(attrs={
+            'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red',
+            'placeholder': 'ex. A12'
+        })
+    )
 
     def clean_date(self):
         date_value = self.cleaned_data.get('date')
         if date_value and date_value < datetime.date.today():
             raise ValidationError("La date ne peut pas être dans le passé")
         return date_value
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name in ['username', 'password']:
+            self.fields[field_name].widget.attrs.update({
+                'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cinema-red'
+            })
 
 
 class RegisterForm(UserCreationForm):

@@ -12,12 +12,13 @@
 
     <div class="grid grid-cols-3 gap-6 mb-10">
         {% for movie in page %}
-        <div class="bg-cinema-dark border border-white/10 rounded-xl overflow-hidden hover:border-cinema-red/50 transition-colors group">
+        <a href="{% url 'movie' movie.id %}"
+        class="block bg-cinema-dark border border-white/10 rounded-xl overflow-hidden hover:border-cinema-red/50 transition-colors group">
 
             <div class="aspect-2/3 bg-white/5 overflow-hidden">
                 {% if movie.movie_poster %}
                 <img src="{{ movie.movie_poster }}" alt="{{ movie.title }}"
-                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 {% else %}
                 <div class="w-full h-full flex items-center justify-center text-gray-600">
                     <i class="fa-solid fa-film text-5xl"></i>
@@ -40,13 +41,12 @@
                 <p class="text-gray-500 text-xs mb-3">Aucun genre</p>
                 {% endif %}
 
-                <a href="{% url 'reservation' %}"
-                   class="block text-center mt-2 px-4 py-2 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
-                    Réserver
-                </a>
+                <span class="block text-center mt-2 px-4 py-2 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm group-hover:bg-red-700 transition-colors">
+                    Voir le film
+                </span>
             </div>
 
-        </div>
+        </a>
         {% endfor %}
     </div>
 

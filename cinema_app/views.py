@@ -8,6 +8,10 @@ from .models import * # a changer
 from .forms import ContactForm, ReservationForm, RegisterForm, UserUpdateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
+import datetime
+from .constants import PRIX_BILLET
+from django.utils import timezone
+
 
 #TODO : être authentifié pour faire une reservation utilisation de User
 #TODO : quand on clique sur reserver depuis un film on préremplis le formulaire avec lui
@@ -16,11 +20,17 @@ from django.contrib.auth import login
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'cinema_app/index.html')
+        prochaines_seances = Screening.objects.select_related('movie', 'cinema_room').filter(
+            screening_time__gte=timezone.now()
+        ).order_by('screening_time')[:3]
+
+        return render(request, 'cinema_app/index.html', {
+            'prochaines_seances': prochaines_seances,
+        })
 
 
 class ReservationView(LoginRequiredMixin, View):
-    login_url = 'login'  # redirige ici si pas connecté
+    login_url = 'login'
 
     def get(self, request):
         form = ReservationForm()
@@ -29,9 +39,27 @@ class ReservationView(LoginRequiredMixin, View):
     def post(self, request):
         form = ReservationForm(request.POST)
         if form.is_valid():
-            reservation = form.save(commit=False)
-            reservation.user = request.user
-            reservation.save()
+            hour = form.cleaned_data['hour']
+            date = form.cleaned_data['date']
+            heure_obj = datetime.datetime.strptime(hour, '%H:%M').time()
+            screening_time = datetime.datetime.combine(date, heure_obj)
+
+            screening, created = Screening.objects.get_or_create(
+                movie=form.cleaned_data['film'],
+                cinema_room=form.cleaned_data['room'],
+                screening_time=screening_time,
+            )
+
+            try:
+                Ticket.objects.create(
+                    screening=screening,
+                    person=request.user,
+                    price=PRIX_BILLET,
+                    seat_number=form.cleaned_data['seat_number'],
+                )
+            except Exception:
+                messages.add_message(request, messages.ERROR, "Ce siège est déjà réservé pour cette projection.")
+                return render(request, 'cinema_app/reservation.html', {'form': form})
 
             messages.add_message(request, messages.SUCCESS, "Réservation bien effectuée")
             return redirect('index')
@@ -96,10 +124,11 @@ class AccountView(LoginRequiredMixin, View):
 
     def get(self, request):
         form = UserUpdateForm(instance=request.user)
-        reservations = request.user.reservations.all().order_by('date', 'hour')
+        tickets = request.user.tickets.all().order_by('screening__screening_time')
         return render(request, 'cinema_app/account.html', {
             'form': form,
-            'reservations': reservations,
+            'tickets': tickets,
+            'now': timezone.now(),
         })
 
     def post(self, request):
@@ -109,27 +138,27 @@ class AccountView(LoginRequiredMixin, View):
             messages.add_message(request, messages.SUCCESS, "Profil mis à jour.")
             return redirect('account')
 
-        reservations = request.user.reservations.all().order_by('date', 'hour')
+        tickets = request.user.tickets.all().order_by('screening__screening_time')
         return render(request, 'cinema_app/account.html', {
             'form': form,
-            'reservations': reservations,
+            'tickets': tickets,
         })
 
 
-class DeleteReservationView(LoginRequiredMixin, View):
+class DeleteTicketView(LoginRequiredMixin, View):
     login_url = 'login'
 
     def get(self, request, pk):
-        reservation = get_object_or_404(Reservation, pk=pk, user=request.user)
-        return render(request, 'cinema_app/delete_reservation_confirm.html', {'reservation': reservation})
+        ticket = get_object_or_404(Ticket, pk=pk, person=request.user)
+        return render(request, 'cinema_app/delete_ticket_confirm.html', {'ticket': ticket})
 
     def post(self, request, pk):
-        reservation = get_object_or_404(Reservation, pk=pk, user=request.user)
+        ticket = get_object_or_404(Ticket, pk=pk, person=request.user)
 
-        if reservation.is_past():
-            messages.add_message(request, messages.ERROR, "Impossible de supprimer une réservation passée.")
+        if ticket.screening.screening_time < timezone.now():
+            messages.add_message(request, messages.ERROR, "Impossible d'annuler un billet pour une projection passée.")
             return redirect('account')
 
-        reservation.delete()
-        messages.add_message(request, messages.SUCCESS, "Réservation annulée.")
+        ticket.delete()
+        messages.add_message(request, messages.SUCCESS, "Billet annulé.")
         return redirect('account')

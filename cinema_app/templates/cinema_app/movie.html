@@ -3,27 +3,63 @@
 
 {% block content %}
 
-    {% load static %}
+<a href="{% url 'movies' %}"
+   class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+    <i class="fa-solid fa-arrow-left"></i>
+    Retour au catalogue
+</a>
 
-    <h2 class="text-3xl font-extrabold text-white mb-2">{{ movie.title }}</h2>
+<div class="grid grid-cols-3 gap-10">
 
-    <img src="{{ movie.movie_poster }}" alt="{{ movie.title }}_poster">
+    <!-- Affiche -->
+    <div class="col-span-1">
+        <div class="aspect-2/3 bg-white/5 rounded-xl overflow-hidden border border-white/10">
+            {% if movie.movie_poster %}
+            <img src="{{ movie.movie_poster }}" alt="{{ movie.title }}"
+                 class="w-full h-full object-cover">
+            {% else %}
+            <div class="w-full h-full flex items-center justify-center text-gray-600">
+                <i class="fa-solid fa-film text-6xl"></i>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 
-    <p class="text-gray-400 mb-10">{{ movie.description }}</p>
+    <!-- Infos -->
+    <div class="col-span-2">
+        <h2 class="text-4xl font-extrabold text-white mb-4">{{ movie.title }}</h2>
 
-    <p>durée = {{ movie.duration }}</p>
-
-    <p>date de sortie = {{ movie.release_date }}</p>
-
-    <p>genre(s) :</p>
-    {% if movie.genre.all %}
-        <ul>
+        {% if movie.genre.all %}
+        <div class="flex flex-wrap gap-2 mb-6">
             {% for genre in movie.genre.all %}
-                <li>{{ genre.name }}</li>
+            <span class="inline-block px-3 py-1 rounded-full bg-cinema-red/10 text-cinema-red text-xs font-semibold uppercase tracking-wide">
+                {{ genre.name }}
+            </span>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p>pas de genre</p>
-    {% endif %}
+        </div>
+        {% else %}
+        <p class="text-gray-500 text-sm mb-6">Aucun genre</p>
+        {% endif %}
+
+        <div class="flex gap-8 mb-6 text-sm">
+            <div class="flex items-center gap-2 text-gray-300">
+                <i class="fa-solid fa-clock text-cinema-red"></i>
+                {{ movie.duration }} min
+            </div>
+            <div class="flex items-center gap-2 text-gray-300">
+                <i class="fa-solid fa-calendar text-cinema-red"></i>
+                {{ movie.release_date|date:"d/m/Y" }}
+            </div>
+        </div>
+
+        <p class="text-gray-400 leading-relaxed mb-8">{{ movie.description }}</p>
+
+        <a href="{% url 'reservation' %}"
+           class="inline-block px-6 py-3 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
+            Réserver ce film
+        </a>
+    </div>
+
+</div>
 
 {% endblock %}

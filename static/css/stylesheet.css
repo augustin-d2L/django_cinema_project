@@ -1,0 +1,12 @@
+:root {
+    color-scheme: dark;
+}
+
+select option {
+    background-color: #14151c;
+    color: #fff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}

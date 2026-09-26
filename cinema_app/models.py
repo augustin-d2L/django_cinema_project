@@ -12,11 +12,13 @@ class Genre(models.Model):
         verbose_name = "genre"
         verbose_name_plural = "genres"
 
+
 class Movie(models.Model):
     title = models.CharField(max_length=100, verbose_name="Titre")
     description = models.TextField(verbose_name="Description")
     duration = models.PositiveIntegerField(verbose_name="Durée (minutes)")
     release_date = models.DateField(verbose_name="Date de sortie")
+    movie_poster = models.URLField(blank=True, null=True)
     genre = models.ManyToManyField(Genre, verbose_name="Genre", related_name='movies', blank=True)
 
     def __str__(self):
@@ -27,17 +29,19 @@ class Movie(models.Model):
         verbose_name = "film"
         verbose_name_plural = "films"
 
+
 class CinemaRoom(models.Model):
     number = models.PositiveIntegerField(verbose_name="Numéro", unique=True)
     capacity = models.PositiveIntegerField(verbose_name="Capacité")
 
     def __str__(self):
-        return str(self.number)
+        return str(f"{self.number} - Capacité de {self.capacity}")
 
     class Meta:
         ordering = ('number', )
         verbose_name = "salle de cinéma"
         verbose_name_plural = "salles de cinéma"
+
 
 class Screening(models.Model): # Careful to not overlap 2 screenings in same room at same time
     movie = models.ForeignKey(Movie, verbose_name="Film", related_name='screenings', on_delete=models.CASCADE)
@@ -51,6 +55,7 @@ class Screening(models.Model): # Careful to not overlap 2 screenings in same roo
         ordering = ('screening_time', )
         verbose_name = "projection"
         verbose_name_plural = "projections"
+
 
 class Ticket(models.Model):
     class Status(models.TextChoices):
@@ -74,3 +79,16 @@ class Ticket(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['screening', 'seat_number'], name='unique_seat_per_screening')
         ]
+
+
+class ContactMessage(models.Model):
+    email_address = models.EmailField(verbose_name="Courriel")
+    message_content = models.CharField(max_length=500, verbose_name="Contenu")
+
+    def __str__(self):
+            return f"Message de - {self.email_address}"
+
+    class Meta:
+            ordering = ('email_address', )
+            verbose_name = "message"
+            verbose_name_plural = "messages"

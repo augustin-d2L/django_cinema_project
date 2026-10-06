@@ -1,10 +1,10 @@
 from django.urls import path
-
 from . import views
 
 # revoir exemple demo_app
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('post-login', views.PostLoginView.as_view(), name='post_login'),
     path('reservation', views.ReservationView.as_view(), name='reservation'),
     path('contact', views.ContactView.as_view(), name='contact'),
     path('movies', views.MoviesView.as_view(), name='movies'),

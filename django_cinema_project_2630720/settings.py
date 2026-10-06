@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cinema_app',
+    'employee_app',
 ]
 
 MIDDLEWARE = [
@@ -135,5 +136,5 @@ MAILERS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'post_login'
 LOGOUT_REDIRECT_URL = 'index'

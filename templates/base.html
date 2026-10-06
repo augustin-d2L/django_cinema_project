@@ -66,11 +66,19 @@
                     </a>
 
                     {% if user.is_authenticated %}
-                    <a href="{% url 'reservation' %}"
-                    class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
-                        Réserver
-                    </a>
 
+                        {% if user.is_superuser or perms.cinema_app.add_screening %}
+                        <a href="{% url 'employee:dashboard' %}"
+                        class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
+                            Espace employé
+                        </a>
+                        {% else %}
+                        <a href="{% url 'reservation' %}"
+                        class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
+                            Réserver
+                        </a>
+                        {% endif %}
+                    
                     <a href="{% url 'account' %}"
                     class="ml-2 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-2">
                         <i class="fa-solid fa-user"></i>{{ user.username }}

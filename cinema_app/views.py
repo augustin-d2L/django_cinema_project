@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 import datetime
 from .constants import PRIX_BILLET
+from employee_app.mixins import EMPLOYEE_GROUPS
 from django.utils import timezone
 
 
@@ -27,6 +28,13 @@ class IndexView(View):
         return render(request, 'cinema_app/index.html', {
             'prochaines_seances': prochaines_seances,
         })
+
+
+class PostLoginView(View):
+    def get(self, request):
+        if request.user.is_superuser or request.user.groups.filter(name__in=EMPLOYEE_GROUPS).exists():
+            return redirect('employee:dashboard')
+        return redirect('index')
 
 
 class ReservationView(LoginRequiredMixin, View):

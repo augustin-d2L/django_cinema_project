@@ -70,7 +70,7 @@ class Ticket(models.Model):
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.RESERVED, verbose_name="Statut")
 
     def __str__(self):
-        return f"{self.screening.movie.title} | {self.screening.screening_time}, {self.screening.cinema_room} - {self.seat_number}"
+        return f"{self.screening.movie.title} | {self.screening.screening_time}, {self.screening.cinema_room.number} - {self.seat_number}"
 
     class Meta:
         ordering = ('screening', 'seat_number',)

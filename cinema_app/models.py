@@ -18,8 +18,8 @@ class Movie(models.Model):
     description = models.TextField(verbose_name="Description")
     duration = models.PositiveIntegerField(verbose_name="Durée (minutes)")
     release_date = models.DateField(verbose_name="Date de sortie")
-    movie_poster = models.URLField(blank=True, null=True)
-    genre = models.ManyToManyField(Genre, verbose_name="Genre", related_name='movies', blank=True)
+    movie_poster = models.ImageField(default="", upload_to='movie_posters/', verbose_name="Image")
+    genre = models.ForeignKey(Genre, verbose_name="Genre", related_name='movies', blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.title

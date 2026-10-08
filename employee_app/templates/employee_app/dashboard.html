@@ -5,6 +5,132 @@
 
     {% load static %}
 
-    <h1>Employee Dashboard</h1>
+    <h1>VERFIFIER TOUTES LES CONDITIONS ET LEURS VALIDITÉ Employee Dashboard but avoir des section pour avoir des accès rapide</h1>
+    <br>
+
+    {% if user.is_superuser or perms.cinema_app.view_screening %}
+    <p>peut visualiser des projections</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.add_screening %}
+    <p>peut ajouter des projections</p>
+    <br>
+    {% endif %}
+        
+    {% if user.is_superuser or perms.cinema_app.edit_screening %}
+    <p>peut modifier des projections</p>
+    <br>
+    {% endif %}
+
+        {% if user.is_superuser or perms.cinema_app.delete_screening %}
+    <p>peut supprimer des projections</p>
+    <br>
+    {% endif %}
+
+
+    {% if user.is_superuser or perms.cinema_app.view_ticket %}
+    <p>peut visualiser des ticket</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.add_ticket %}
+    <p>peut ajouter des ticket</p>
+    <br>
+    {% endif %}
+
+        {% if user.is_superuser or perms.cinema_app.edit_ticket %}
+    <p>peut modifier des ticket</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.delete_ticket %}
+    <p>peut supprimer des ticket</p>
+    <br>
+    {% endif %}
+
+
+    {% if user.is_superuser or perms.cinema_app.view_contactMessage %}
+    <p>peut visualiser des Contact message</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.add_contactMessage %}
+    <p>peut ajouter des Contact message</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.edit_contactMessage %}
+    <p>peut modifier des Contact message</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.delete_contactMessage %}
+    <p>peut supprimer des Contact message</p>
+    <br>
+    {% endif %}
+
+
+    {% if user.is_superuser or perms.cinema_app.view_user %}
+    <p>peut visualiser des utilisateurs</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.add_user %}
+    <p>peut ajouter des utilisateurs</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.edit_user %}
+    <p>peut modifier des utilisateurs</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.delete_user %}
+    <p>peut supprimer des utilisateurs</p>
+    <br>
+    {% endif %}
+
+
+    {% if user.is_superuser or perms.cinema_app.view_genre %}
+    <p>peut visualiser des genres</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.add_genre %}
+    <p>peut ajouter des genres</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.edit_genre %}
+    <p>peut modifier des genres</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.delete_genre %}
+    <p>peut supprimer des genres</p>
+    <br>
+    {% endif %}
+
+
+    {% if user.is_superuser or perms.cinema_app.view_movie %}
+    <p>peut visualiser des films</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.add_movie %}
+    <p>peut ajouter des films</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.edit_movie %}
+    <p>peut modifier des films</p>
+    <br>
+    {% endif %}
+
+    {% if user.is_superuser or perms.cinema_app.delete_movie %}
+    <p>peut supprimer des films</p>
+    <br>
+    {% endif %}
 
 {% endblock %}

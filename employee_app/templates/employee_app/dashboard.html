@@ -1,136 +1,219 @@
 {% extends 'base.html' %}
-{% block title %}Accueil Cinéma{% endblock %}
+{% block title %}Espace employé{% endblock %}
 
 {% block content %}
 
-    {% load static %}
+<div class="mb-10">
+    <h2 class="text-3xl font-extrabold text-white mb-2">Espace employé</h2>
+    <p class="text-gray-400">Bonjour {{ user.username }}, voici vos accès rapides selon vos permissions.</p>
+</div>
 
-    <h1>VERFIFIER TOUTES LES CONDITIONS ET LEURS VALIDITÉ Employee Dashboard but avoir des section pour avoir des accès rapide</h1>
-    <br>
+<div class="grid grid-cols-3 gap-6">
 
-    {% if user.is_superuser or perms.cinema_app.view_screening %}
-    <p>peut visualiser des projections</p>
-    <br>
+    <!-- PROJECTIONS -->
+    {% if perms.cinema_app.view_screening or perms.cinema_app.add_screening or perms.cinema_app.change_screening or perms.cinema_app.delete_screening %}
+    <div class="section-disabled bg-cinema-dark border border-white/10 border-t-4 border-t-cinema-red rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-cinema-red/10 text-cinema-red">
+                <i class="fa-solid fa-clapperboard"></i>
+            </div>
+            <h3 class="text-white font-bold text-lg">Projections</h3>
+        </div>
+        <div class="space-y-2">
+            {% if perms.cinema_app.view_screening %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-eye w-4 text-cinema-red"></i>Visualiser les projections
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.add_screening %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-plus w-4 text-cinema-red"></i>Ajouter une projection
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.change_screening %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-pen w-4 text-cinema-red"></i>Modifier les projections
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.delete_screening %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-trash w-4 text-cinema-red"></i>Supprimer des projections
+            </span>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
 
-    {% if user.is_superuser or perms.cinema_app.add_screening %}
-    <p>peut ajouter des projections</p>
-    <br>
-    {% endif %}
-        
-    {% if user.is_superuser or perms.cinema_app.edit_screening %}
-    <p>peut modifier des projections</p>
-    <br>
-    {% endif %}
-
-        {% if user.is_superuser or perms.cinema_app.delete_screening %}
-    <p>peut supprimer des projections</p>
-    <br>
-    {% endif %}
-
-
-    {% if user.is_superuser or perms.cinema_app.view_ticket %}
-    <p>peut visualiser des ticket</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.add_ticket %}
-    <p>peut ajouter des ticket</p>
-    <br>
-    {% endif %}
-
-        {% if user.is_superuser or perms.cinema_app.edit_ticket %}
-    <p>peut modifier des ticket</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.delete_ticket %}
-    <p>peut supprimer des ticket</p>
-    <br>
+    <!-- BILLETS -->
+    {% if perms.cinema_app.view_ticket or perms.cinema_app.add_ticket or perms.cinema_app.change_ticket or perms.cinema_app.delete_ticket %}
+    <div class="section-disabled bg-cinema-dark border border-white/10 border-t-4 border-t-amber-500 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
+                <i class="fa-solid fa-ticket"></i>
+            </div>
+            <h3 class="text-white font-bold text-lg">Billets</h3>
+        </div>
+        <div class="space-y-2">
+            {% if perms.cinema_app.view_ticket %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-eye w-4 text-amber-500"></i>Visualiser les billets
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.add_ticket %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-plus w-4 text-amber-500"></i>Ajouter un billet
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.change_ticket %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-pen w-4 text-amber-500"></i>Modifier les billets
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.delete_ticket %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-trash w-4 text-amber-500"></i>Supprimer des billets
+            </span>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
 
-
-    {% if user.is_superuser or perms.cinema_app.view_contactMessage %}
-    <p>peut visualiser des Contact message</p>
-    <br>
+    <!-- MESSAGES DE CONTACT -->
+    {% if perms.cinema_app.view_contactmessage or perms.cinema_app.add_contactmessage or perms.cinema_app.change_contactmessage or perms.cinema_app.delete_contactmessage %}
+    <div class="section-disabled bg-cinema-dark border border-white/10 border-t-4 border-t-sky-500 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-sky-500/10 text-sky-500">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <h3 class="text-white font-bold text-lg">Messages de contact</h3>
+        </div>
+        <div class="space-y-2">
+            {% if perms.cinema_app.view_contactmessage %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-eye w-4 text-sky-500"></i>Visualiser les messages
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.add_contactmessage %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-plus w-4 text-sky-500"></i>Ajouter un message
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.change_contactmessage %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-pen w-4 text-sky-500"></i>Modifier les messages
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.delete_contactmessage %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-trash w-4 text-sky-500"></i>Supprimer des messages
+            </span>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
 
-    {% if user.is_superuser or perms.cinema_app.add_contactMessage %}
-    <p>peut ajouter des Contact message</p>
-    <br>
+    <!-- UTILISATEURS -->
+    {% if perms.auth.view_user or perms.auth.add_user or perms.auth.change_user or perms.auth.delete_user %}
+    <div class="section-disabled bg-cinema-dark border border-white/10 border-t-4 border-t-emerald-500 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="text-white font-bold text-lg">Utilisateurs</h3>
+        </div>
+        <div class="space-y-2">
+            {% if perms.auth.view_user %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-eye w-4 text-emerald-500"></i>Visualiser les utilisateurs
+            </span>
+            {% endif %}
+            {% if perms.auth.add_user %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-plus w-4 text-emerald-500"></i>Ajouter un utilisateur
+            </span>
+            {% endif %}
+            {% if perms.auth.change_user %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-pen w-4 text-emerald-500"></i>Modifier les utilisateurs
+            </span>
+            {% endif %}
+            {% if perms.auth.delete_user %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-trash w-4 text-emerald-500"></i>Supprimer des utilisateurs
+            </span>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
 
-    {% if user.is_superuser or perms.cinema_app.edit_contactMessage %}
-    <p>peut modifier des Contact message</p>
-    <br>
+    <!-- GENRES -->
+    {% if perms.cinema_app.view_genre or perms.cinema_app.add_genre or perms.cinema_app.change_genre or perms.cinema_app.delete_genre %}
+    <div class="section-disabled bg-cinema-dark border border-white/10 border-t-4 border-t-violet-500 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-violet-500/10 text-violet-500">
+                <i class="fa-solid fa-tags"></i>
+            </div>
+            <h3 class="text-white font-bold text-lg">Genres</h3>
+        </div>
+        <div class="space-y-2">
+            {% if perms.cinema_app.view_genre %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-eye w-4 text-violet-500"></i>Visualiser les genres
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.add_genre %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-plus w-4 text-violet-500"></i>Ajouter un genre
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.change_genre %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-pen w-4 text-violet-500"></i>Modifier les genres
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.delete_genre %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-trash w-4 text-violet-500"></i>Supprimer des genres
+            </span>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
 
-    {% if user.is_superuser or perms.cinema_app.delete_contactMessage %}
-    <p>peut supprimer des Contact message</p>
-    <br>
+    <!-- FILMS -->
+    {% if perms.cinema_app.view_movie or perms.cinema_app.add_movie or perms.cinema_app.change_movie or perms.cinema_app.delete_movie %}
+    <div class="bg-cinema-dark border border-white/10 border-t-4 border-t-pink-500 rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-pink-500/10 text-pink-500">
+                <i class="fa-solid fa-film"></i>
+            </div>
+            <h3 class="text-white font-bold text-lg">Films</h3>
+        </div>
+        <div class="space-y-2">
+            {% if perms.cinema_app.view_movie %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-eye w-4 text-pink-500"></i>Visualiser les films
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.add_movie %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-plus w-4 text-pink-500"></i>Ajouter un film
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.change_movie %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-pen w-4 text-pink-500"></i>Modifier les films
+            </span>
+            {% endif %}
+            {% if perms.cinema_app.delete_movie %}
+            <span class="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 text-gray-300 text-sm hover:bg-white/10 transition-colors cursor-pointer">
+                <i class="fa-solid fa-trash w-4 text-pink-500"></i>Supprimer des films
+            </span>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
 
-
-    {% if user.is_superuser or perms.cinema_app.view_user %}
-    <p>peut visualiser des utilisateurs</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.add_user %}
-    <p>peut ajouter des utilisateurs</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.edit_user %}
-    <p>peut modifier des utilisateurs</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.delete_user %}
-    <p>peut supprimer des utilisateurs</p>
-    <br>
-    {% endif %}
-
-
-    {% if user.is_superuser or perms.cinema_app.view_genre %}
-    <p>peut visualiser des genres</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.add_genre %}
-    <p>peut ajouter des genres</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.edit_genre %}
-    <p>peut modifier des genres</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.delete_genre %}
-    <p>peut supprimer des genres</p>
-    <br>
-    {% endif %}
-
-
-    {% if user.is_superuser or perms.cinema_app.view_movie %}
-    <p>peut visualiser des films</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.add_movie %}
-    <p>peut ajouter des films</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.edit_movie %}
-    <p>peut modifier des films</p>
-    <br>
-    {% endif %}
-
-    {% if user.is_superuser or perms.cinema_app.delete_movie %}
-    <p>peut supprimer des films</p>
-    <br>
-    {% endif %}
+</div>
 
 {% endblock %}

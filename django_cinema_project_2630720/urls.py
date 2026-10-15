@@ -30,6 +30,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('cinema_app.urls')),
     path('employee/', include('employee_app.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

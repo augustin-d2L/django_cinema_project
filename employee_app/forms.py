@@ -17,10 +17,12 @@ FILE_CLASSES = (
 class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ['title', 'description', 'duration', 'release_date', 'genre', 'movie_poster']
+        fields = ['title_fr', 'title_en', 'description_fr', 'description_en', 'duration', 'release_date', 'genre', 'movie_poster']
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Ex. Dune : Deuxième partie'}),
-            'description': forms.Textarea(attrs={'rows': 6, 'placeholder': 'Synopsis du film...'}),
+            'title_fr': forms.TextInput(attrs={'placeholder': 'Ex. Dune : Deuxième partie'}),
+            'title_en': forms.TextInput(attrs={'placeholder': 'Ex. Dune: Part Two'}),
+            'description_fr': forms.Textarea(attrs={'rows': 6, 'placeholder': 'Synopsis du film...'}),
+            'description_en': forms.Textarea(attrs={'rows': 6, 'placeholder': 'Movie synopsis...'}),
             'duration': forms.NumberInput(attrs={'placeholder': 'Ex. 120', 'min': 1}),
             'release_date': forms.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
         }

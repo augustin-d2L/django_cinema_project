@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Contact{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate "Contact" %}{% endblock %}
 
 {% block content %}
 
     {% load static %}
 
-<h2 class="text-3xl font-extrabold text-white mb-2">Contactez-nous</h2>
-<p class="text-gray-400 mb-10">Une question, une suggestion ? Voici comment nous joindre.</p>
+<h2 class="text-3xl font-extrabold text-white mb-2">{% translate "Contactez-nous" %}</h2>
+<p class="text-gray-400 mb-10">{% translate "Une question, une suggestion ? Voici comment nous joindre." %}</p>
 
 <div class="grid grid-cols-2 gap-10">
 
@@ -17,7 +19,7 @@
                 <i class="fa-solid fa-location-dot"></i>
             </div>
             <div>
-                <h3 class="text-white font-semibold">Adresse</h3>
+                <h3 class="text-white font-semibold">{% translate "Adresse" %}</h3>
                 <p class="text-gray-400 text-sm">123 rue du Jacques-Cartier Est, Chicoutimi, QC</p>
             </div>
         </div>
@@ -27,7 +29,7 @@
                 <i class="fa-solid fa-phone"></i>
             </div>
             <div>
-                <h3 class="text-white font-semibold">Téléphone</h3>
+                <h3 class="text-white font-semibold">{% translate "Téléphone" %}</h3>
                 <p class="text-gray-400 text-sm">123-456-7890</p>
             </div>
         </div>
@@ -37,7 +39,7 @@
                 <i class="fa-solid fa-envelope"></i>
             </div>
             <div>
-                <h3 class="text-white font-semibold">Courriel</h3>
+                <h3 class="text-white font-semibold">{% translate "Courriel" %}</h3>
                 <p class="text-gray-400 text-sm">info@fauxcinema.ca</p>
             </div>
         </div>
@@ -47,8 +49,8 @@
                 <i class="fa-solid fa-clock"></i>
             </div>
             <div>
-                <h3 class="text-white font-semibold">Heures d'ouverture</h3>
-                <p class="text-gray-400 text-sm">Tous les jours, 12h à 23h</p>
+                <h3 class="text-white font-semibold">{% translate "Heures d'ouverture" %}</h3>
+                <p class="text-gray-400 text-sm">{% translate "Tous les jours, 12h à 23h" %}</p>
             </div>
         </div>
     </div>
@@ -56,9 +58,9 @@
     <!-- Carte / bloc secondaire -->
     <div class="bg-cinema-dark border border-white/10 rounded-xl p-6 flex flex-col justify-center items-center text-center">
         <i class="fa-solid fa-film text-cinema-red text-4xl mb-4"></i>
-        <h3 class="text-white font-semibold text-lg mb-2">Une question sur un film ou une réservation ?</h3>
+        <h3 class="text-white font-semibold text-lg mb-2">{% translate "Une question sur un film ou une réservation ?" %}</h3>
         <p class="text-gray-400 text-sm mb-4">
-            Écrivez-nous directement par courriel et nous vous répondrons dans les plus brefs délais.
+            {% translate "Écrivez-nous directement par courriel et nous vous répondrons dans les plus brefs délais." %}
         </p>
         <form action="/contact" method="post" class="w-full text-left space-y-4">
             {% csrf_token %}

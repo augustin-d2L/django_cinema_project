@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html, format_html_join
 from django.utils.safestring import mark_safe
+from modeltranslation.admin import TranslationAdmin
 from .models import Genre, Movie, CinemaRoom, Screening, Ticket, ContactMessage
 
 admin.site.site_header = "CinéApp — Administration"
@@ -9,7 +10,7 @@ admin.site.site_title = "CinéApp"
 admin.site.index_title = "Gestion du cinéma"
 
 @admin.register(Genre)
-class GenreAdmin(admin.ModelAdmin):
+class GenreAdmin(TranslationAdmin):
     list_display = ("name", "view_movies_link")
     ordering = ['name',]
     readonly_fields = ("movies_list",)
@@ -63,7 +64,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 
 @admin.register(Movie)
-class MovieAdmin(admin.ModelAdmin):
+class MovieAdmin(TranslationAdmin):
     list_display = ["movie_poster_image", "genre", "release_date"]
     list_filter = ["genre", "release_date"]
     list_select_related = ["genre"]

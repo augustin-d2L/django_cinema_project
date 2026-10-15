@@ -1,0 +1,433 @@
+# English translation of the CinéApp project.
+# Copyright (C) 2026 Augustin Dellisse
+# This file is distributed under the same license as the CinéApp package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinéApp 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-15 17:08-0400\n"
+"PO-Revision-Date: 2026-10-15 17:15-0400\n"
+"Last-Translator: Augustin Dellisse\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\cinema_app\forms.py:15
+msgid "Adresse Courriel"
+msgstr "Email Address"
+
+#: .\cinema_app\forms.py:22
+msgid "Message"
+msgstr "Message"
+
+#: .\cinema_app\forms.py:34
+msgid "Heure"
+msgstr "Time"
+
+#: .\cinema_app\forms.py:41 .\cinema_app\templates\cinema_app\movie.html:4
+msgid "Film"
+msgstr "Movie"
+
+#: .\cinema_app\forms.py:48 .\cinema_app\templates\cinema_app\account.html:65
+msgid "Salle"
+msgstr "Room"
+
+#: .\cinema_app\forms.py:55
+msgid "Date"
+msgstr "Date"
+
+#: .\cinema_app\forms.py:62
+msgid "Numéro de siège"
+msgstr "Seat number"
+
+#: .\cinema_app\forms.py:88
+msgid "Adresse courriel"
+msgstr "Email Address"
+
+#: .\cinema_app\templates\cinema_app\account.html:4
+#: .\cinema_app\templates\cinema_app\account.html:8
+msgid "Mon compte"
+msgstr "My account"
+
+#: .\cinema_app\templates\cinema_app\account.html:9
+msgid "Gérez vos informations et vos réservations."
+msgstr "Manage your information and your bookings."
+
+#: .\cinema_app\templates\cinema_app\account.html:16
+msgid "Informations personnelles"
+msgstr "Personal information"
+
+#: .\cinema_app\templates\cinema_app\account.html:47
+msgid "Mettre à jour"
+msgstr "Update"
+
+#: .\cinema_app\templates\cinema_app\account.html:55
+msgid "Mes réservations"
+msgstr "My bookings"
+
+#: .\cinema_app\templates\cinema_app\account.html:65
+#: .\cinema_app\templates\cinema_app\delete_ticket_confirm.html:12
+msgid "Siège"
+msgstr "Seat"
+
+#: .\cinema_app\templates\cinema_app\account.html:76
+msgid "Passée"
+msgstr "Past"
+
+#: .\cinema_app\templates\cinema_app\account.html:82
+msgid "Aucune réservation pour le moment."
+msgstr "No bookings yet."
+
+#: .\cinema_app\templates\cinema_app\contact.html:4 .\templates\base.html:64
+#: .\templates\base.html:164
+msgid "Contact"
+msgstr "Contact"
+
+#: .\cinema_app\templates\cinema_app\contact.html:10
+msgid "Contactez-nous"
+msgstr "Contact us"
+
+#: .\cinema_app\templates\cinema_app\contact.html:11
+msgid "Une question, une suggestion ? Voici comment nous joindre."
+msgstr "A question or a suggestion? Here is how to reach us."
+
+#: .\cinema_app\templates\cinema_app\contact.html:22
+msgid "Adresse"
+msgstr "Address"
+
+#: .\cinema_app\templates\cinema_app\contact.html:32
+msgid "Téléphone"
+msgstr "Phone"
+
+#: .\cinema_app\templates\cinema_app\contact.html:42
+msgid "Courriel"
+msgstr "Email"
+
+#: .\cinema_app\templates\cinema_app\contact.html:52
+msgid "Heures d'ouverture"
+msgstr "Opening hours"
+
+#: .\cinema_app\templates\cinema_app\contact.html:53
+msgid "Tous les jours, 12h à 23h"
+msgstr "Every day, 12 PM to 11 PM"
+
+#: .\cinema_app\templates\cinema_app\contact.html:61
+msgid "Une question sur un film ou une réservation ?"
+msgstr "A question about a movie or a booking?"
+
+#: .\cinema_app\templates\cinema_app\contact.html:63
+msgid ""
+"Écrivez-nous directement par courriel et nous vous répondrons dans les plus "
+"brefs délais."
+msgstr ""
+"Write to us directly by email and we will get back to you as soon as "
+"possible."
+
+#: .\cinema_app\templates\cinema_app\delete_ticket_confirm.html:4
+msgid "Confirmer l'annulation"
+msgstr "Confirm cancellation"
+
+#: .\cinema_app\templates\cinema_app\delete_ticket_confirm.html:10
+msgid "Annuler ce billet ?"
+msgstr "Cancel this ticket?"
+
+#: .\cinema_app\templates\cinema_app\delete_ticket_confirm.html:19
+msgid "Retour"
+msgstr "Back"
+
+#: .\cinema_app\templates\cinema_app\delete_ticket_confirm.html:23
+msgid "Confirmer"
+msgstr "Confirm"
+
+#: .\cinema_app\templates\cinema_app\index.html:4 .\templates\base.html:56
+#: .\templates\base.html:162
+msgid "Accueil"
+msgstr "Home"
+
+#: .\cinema_app\templates\cinema_app\index.html:11
+msgid "Bienvenue au CinéApp"
+msgstr "Welcome to CinéApp"
+
+#: .\cinema_app\templates\cinema_app\index.html:13
+msgid ""
+"Réservez vos places pour les meilleurs films en salle, en quelques clics."
+msgstr ""
+"Book your tickets for the best movies in theaters with just a few clicks."
+
+#: .\cinema_app\templates\cinema_app\index.html:18
+msgid "Voir les films"
+msgstr "See the movies"
+
+#: .\cinema_app\templates\cinema_app\index.html:23
+msgid "Créer un compte"
+msgstr "Create an account"
+
+#: .\cinema_app\templates\cinema_app\index.html:30
+msgid "Prochaines séances"
+msgstr "Upcoming screenings"
+
+#: .\cinema_app\templates\cinema_app\index.html:43
+#, python-format
+msgid "Salle %(room)s"
+msgstr "Room %(room)s"
+
+#: .\cinema_app\templates\cinema_app\index.html:47
+msgid "Voir le film"
+msgstr "See the movie"
+
+#: .\cinema_app\templates\cinema_app\index.html:53
+msgid "Aucune séance à venir pour le moment."
+msgstr "There are no upcoming screenings at this time."
+
+#: .\cinema_app\templates\cinema_app\movie.html:11
+msgid "Retour au catalogue"
+msgstr "Back to the catalog"
+
+#: .\cinema_app\templates\cinema_app\movie.html:41
+#: .\cinema_app\templates\cinema_app\movies.html:41
+msgid "Aucun genre"
+msgstr "No genre"
+
+#: .\cinema_app\templates\cinema_app\movie.html:59
+msgid "Réserver ce film"
+msgstr "Book this movie"
+
+#: .\cinema_app\templates\cinema_app\movies.html:4
+#: .\employee_app\templates\employee_app\dashboard.html:24
+#: .\employee_app\templates\movie\movies.html:13 .\templates\base.html:60
+#: .\templates\base.html:163
+msgid "Films"
+msgstr "Movies"
+
+#: .\cinema_app\templates\cinema_app\movies.html:10
+msgid "Nos films"
+msgstr "Our movies"
+
+#: .\cinema_app\templates\cinema_app\movies.html:11
+msgid "Découvrez la programmation actuelle et réservez votre séance."
+msgstr "Discover what's currently showing and book your screening."
+
+#: .\cinema_app\templates\cinema_app\movies.html:68
+#: .\employee_app\templates\movie\movies.html:70
+msgid "sur"
+msgstr "of"
+
+#: .\cinema_app\templates\cinema_app\movies.html:88
+msgid "Aucun film disponible pour le moment."
+msgstr "No movies available at this time."
+
+#: .\cinema_app\templates\cinema_app\reservation.html:4
+msgid "Réservation Cinéma"
+msgstr "Movie booking"
+
+#: .\cinema_app\templates\cinema_app\reservation.html:8
+msgid "Réservation"
+msgstr "Booking"
+
+#: .\cinema_app\templates\cinema_app\reservation.html:9
+msgid "Remplissez le formulaire pour réserver votre séance."
+msgstr "Fill out the form to book your screening."
+
+#: .\cinema_app\templates\cinema_app\reservation.html:69
+msgid "Confirmer la réservation"
+msgstr "Confirm booking"
+
+#: .\cinema_app\views.py:70
+msgid "Ce siège est déjà réservé pour cette projection."
+msgstr "This seat is already reserved for this screening."
+
+#: .\cinema_app\views.py:73
+msgid "Réservation bien effectuée"
+msgstr "Booking successfully made"
+
+#: .\cinema_app\views.py:90
+msgid "Message bien envoyé"
+msgstr "Message successfully sent"
+
+#: .\cinema_app\views.py:125
+msgid "Compte créé avec succès !"
+msgstr "Account created successfully!"
+
+#: .\cinema_app\views.py:147
+msgid "Profil mis à jour."
+msgstr "Profile updated."
+
+#: .\cinema_app\views.py:168
+msgid "Impossible d'annuler un billet pour une projection passée."
+msgstr "You cannot cancel a ticket for a past screening."
+
+#: .\cinema_app\views.py:172
+msgid "Billet annulé."
+msgstr "Ticket cancelled."
+
+#: .\django_cinema_project_2630720\settings.py:116
+msgid "Français"
+msgstr "French"
+
+#: .\django_cinema_project_2630720\settings.py:117
+msgid "Anglais"
+msgstr "English"
+
+#: .\employee_app\templates\employee_app\dashboard.html:4
+#: .\employee_app\templates\employee_app\dashboard.html:9
+#: .\templates\base.html:72
+msgid "Espace employé"
+msgstr "Employee Area"
+
+#: .\employee_app\templates\employee_app\dashboard.html:10
+#, python-format
+msgid "Bonjour %(name)s, voici vos accès rapides selon vos permissions."
+msgstr "Hello %(name)s, here are your quick links based on your permissions."
+
+#: .\employee_app\templates\employee_app\dashboard.html:28
+msgid "Consulter et gérer le catalogue de films."
+msgstr "View and manage the movie catalog."
+
+#: .\employee_app\templates\employee_app\dashboard.html:39
+msgid "Projections"
+msgstr "Screenings"
+
+#: .\employee_app\templates\employee_app\dashboard.html:41
+#: .\employee_app\templates\employee_app\dashboard.html:54
+#: .\employee_app\templates\employee_app\dashboard.html:67
+#: .\employee_app\templates\employee_app\dashboard.html:80
+#: .\employee_app\templates\employee_app\dashboard.html:93
+msgid "Bientôt disponible"
+msgstr "Coming soon"
+
+#: .\employee_app\templates\employee_app\dashboard.html:52
+msgid "Billets"
+msgstr "Tickets"
+
+#: .\employee_app\templates\employee_app\dashboard.html:65
+msgid "Messages de contact"
+msgstr "Contact messages"
+
+#: .\employee_app\templates\employee_app\dashboard.html:78
+msgid "Utilisateurs"
+msgstr "Users"
+
+#: .\employee_app\templates\employee_app\dashboard.html:91
+msgid "Genres"
+msgstr "Genres"
+
+#: .\employee_app\templates\movie\movie_delete.html:4
+msgid "Supprimer un film"
+msgstr "Delete a movie"
+
+#: .\employee_app\templates\movie\movie_delete.html:10
+#, python-format
+msgid "Supprimer « %(titre)s » ?"
+msgstr "Delete \"%(titre)s\"?"
+
+#: .\employee_app\templates\movie\movie_delete.html:12
+msgid ""
+"Cette action est définitive. Les projections et billets liés à ce film "
+"seront aussi supprimés."
+msgstr ""
+"This action is permanent. The screenings and tickets linked to this movie "
+"will also be deleted."
+
+#: .\employee_app\templates\movie\movie_delete.html:19
+#: .\employee_app\templates\movie\movie_form.html:120
+msgid "Annuler"
+msgstr "Cancel"
+
+#: .\employee_app\templates\movie\movie_delete.html:23
+msgid "Supprimer"
+msgstr "Delete"
+
+#: .\employee_app\templates\movie\movie_form.html:4
+msgid "Modifier un film"
+msgstr "Edit a movie"
+
+#: .\employee_app\templates\movie\movie_form.html:4
+#: .\employee_app\templates\movie\movie_form.html:21
+#: .\employee_app\templates\movie\movies.html:18
+msgid "Ajouter un film"
+msgstr "Add a movie"
+
+#: .\employee_app\templates\movie\movie_form.html:9
+msgid "Retour à la liste"
+msgstr "Back to the list"
+
+#: .\employee_app\templates\movie\movie_form.html:21
+#, python-format
+msgid "Modifier « %(title)s »"
+msgstr "Edit \"%(title)s\""
+
+#: .\employee_app\templates\movie\movie_form.html:23
+msgid "Les champs marqués d'un * sont obligatoires."
+msgstr "Fields marked with * are required."
+
+#: .\employee_app\templates\movie\movie_form.html:50
+msgid "Aucune affiche"
+msgstr "No poster"
+
+#: .\employee_app\templates\movie\movie_form.html:124
+msgid "Enregistrer"
+msgstr "Save"
+
+#: .\employee_app\templates\movie\movie_form.html:124
+msgid "Ajouter le film"
+msgstr "Add the movie"
+
+#: .\employee_app\templates\movie\movies.html:4
+msgid "Gestion des films"
+msgstr "Movie management"
+
+#: .\employee_app\templates\movie\movies.html:9
+msgid "Retour à l'espace employé"
+msgstr "Back to the employee area"
+
+#: .\employee_app\templates\movie\movies.html:28
+msgid "Titre"
+msgstr "Title"
+
+#: .\employee_app\templates\movie\movies.html:29
+msgid "Genre"
+msgstr "Genre"
+
+#: .\employee_app\templates\movie\movies.html:30
+msgid "Durée"
+msgstr "Duration"
+
+#: .\employee_app\templates\movie\movies.html:31
+msgid "Sortie"
+msgstr "Release"
+
+#: .\employee_app\templates\movie\movies.html:32
+msgid "Actions"
+msgstr "Actions"
+
+#: .\employee_app\templates\movie\movies.html:70
+msgid "Page"
+msgstr "Page"
+
+#: .\employee_app\templates\movie\movies.html:82
+msgid "Aucun film pour le moment."
+msgstr "No movies yet."
+
+#: .\templates\base.html:83
+msgid "Déconnexion"
+msgstr "Log Out"
+
+#: .\templates\base.html:92
+msgid "Connexion"
+msgstr "Log In"
+
+#: .\templates\base.html:155
+msgid "Votre plateforme de réservation de films en salle, simple et rapide."
+msgstr "Your quick and easy platform for booking movie tickets."
+
+#: .\templates\base.html:160
+msgid "Navigation"
+msgstr "Navigation"
+
+#: .\templates\base.html:169
+msgid "Suivez-nous"
+msgstr "Follow us"

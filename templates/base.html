@@ -1,7 +1,7 @@
-{% load static %}
-
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,6 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
         @theme {
             --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
@@ -35,9 +34,6 @@
             font-family: var(--font-sans);
         }
     </style>
-
-    <!-- JavaScript -->
-    {% block scripts %}{% endblock %}
 </head>
 
 <body class="bg-cinema-black text-gray-200 min-h-screen flex flex-col">
@@ -56,51 +52,63 @@
 
                 <div class="flex items-center gap-1">
                     <a href="{% url 'index' %}"
-                    class="px-4 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                        Accueil
+                       class="px-4 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
+                        {% translate "Accueil" %}
                     </a>
                     <a href="{% url 'movies' %}"
-                    class="px-4 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                        Films
+                       class="px-4 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
+                        {% translate "Films" %}
                     </a>
                     <a href="{% url 'contact' %}"
-                    class="px-4 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                        Contact
+                       class="px-4 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
+                        {% translate "Contact" %}
                     </a>
 
                     {% if user.is_authenticated %}
 
-                        {% if user.is_superuser or perms.cinema_app.add_screening %}
+                        {% if perms.cinema_app.access_employee %}
                         <a href="{% url 'employee:dashboard' %}"
-                        class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
-                            Espace employé
-                        </a>
-                        {% else %}
-                        <a href="{% url 'reservation' %}"
-                        class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
-                            Réserver
+                           class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
+                            {% translate "Espace employé" %}
                         </a>
                         {% endif %}
-                    
-                    <a href="{% url 'account' %}"
-                    class="ml-2 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-user"></i>{{ user.username }}
-                    </a>
 
-                    <form method="post" action="{% url 'logout' %}" class="ml-1">
-                        {% csrf_token %}
-                        <button type="submit"
-                                class="px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </button>
-                    </form>
+                        <a href="{% url 'account' %}"
+                           class="ml-2 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-user"></i>{{ user.username }}
+                        </a>
+
+                        <form method="post" action="{% url 'logout' %}" class="ml-1">
+                            {% csrf_token %}
+                            <button type="submit" title="{% translate 'Déconnexion' %}"
+                                    class="px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </button>
+                        </form>
 
                     {% else %}
-                    <a href="{% url 'login' %}"
-                    class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
-                        Connexion
-                    </a>
+                        <a href="{% url 'login' %}"
+                           class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
+                            {% translate "Connexion" %}
+                        </a>
                     {% endif %}
+
+                    <!-- Sélecteur de langue -->
+                    <form action="{% url 'set_language' %}" method="post" class="ml-2">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                        {% if LANGUAGE_CODE == 'fr' %}
+                        <button type="submit" name="language" value="en" title="English"
+                                class="px-3 py-2 rounded-md text-sm font-semibold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
+                            EN
+                        </button>
+                        {% else %}
+                        <button type="submit" name="language" value="fr" title="Français"
+                                class="px-3 py-2 rounded-md text-sm font-semibold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
+                            FR
+                        </button>
+                        {% endif %}
+                    </form>
                 </div>
             </div>
         </nav>
@@ -112,12 +120,12 @@
         {% for message in messages %}
         <div class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium border
                     {% if message.tags == 'success' %} bg-green-900/40 border-green-700 text-green-300
-                    {% elif message.tags == 'error' or message.tags == 'danger' %} bg-red-900/40 border-red-700 text-red-300
+                    {% elif message.tags == 'error' %} bg-red-900/40 border-red-700 text-red-300
                     {% elif message.tags == 'warning' %} bg-yellow-900/40 border-yellow-700 text-yellow-300
                     {% else %} bg-blue-900/40 border-blue-700 text-blue-300 {% endif %}">
             <i class="fa-solid
                       {% if message.tags == 'success' %} fa-circle-check
-                      {% elif message.tags == 'error' or message.tags == 'danger' %} fa-circle-exclamation
+                      {% elif message.tags == 'error' %} fa-circle-exclamation
                       {% elif message.tags == 'warning' %} fa-triangle-exclamation
                       {% else %} fa-circle-info {% endif %}"></i>
             <span>{{ message }}</span>
@@ -144,21 +152,21 @@
                         <span class="text-lg font-extrabold text-white">CIN<span class="text-cinema-red">É</span>APP</span>
                     </div>
                     <p class="text-sm text-gray-400">
-                        Votre plateforme de réservation de films en salle, simple et rapide.
+                        {% translate "Votre plateforme de réservation de films en salle, simple et rapide." %}
                     </p>
                 </div>
 
                 <div>
-                    <h3 class="text-white font-semibold uppercase text-sm tracking-wide mb-3">Navigation</h3>
+                    <h3 class="text-white font-semibold uppercase text-sm tracking-wide mb-3">{% translate "Navigation" %}</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="{% url 'index' %}" class="text-gray-400 hover:text-cinema-red transition-colors">Accueil</a></li>
-                        <li><a href="{% url 'movies' %}" class="text-gray-400 hover:text-cinema-red transition-colors">Films</a></li>
-                        <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-cinema-red transition-colors">Contact</a></li>
+                        <li><a href="{% url 'index' %}" class="text-gray-400 hover:text-cinema-red transition-colors">{% translate "Accueil" %}</a></li>
+                        <li><a href="{% url 'movies' %}" class="text-gray-400 hover:text-cinema-red transition-colors">{% translate "Films" %}</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-cinema-red transition-colors">{% translate "Contact" %}</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-white font-semibold uppercase text-sm tracking-wide mb-3">Suivez-nous</h3>
+                    <h3 class="text-white font-semibold uppercase text-sm tracking-wide mb-3">{% translate "Suivez-nous" %}</h3>
                     <div class="flex gap-3">
                         <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-gray-300 hover:bg-cinema-red hover:text-white transition-colors">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -182,5 +190,6 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

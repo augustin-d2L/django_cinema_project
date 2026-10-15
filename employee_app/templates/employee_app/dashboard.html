@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Espace employé{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate "Espace employé" %}{% endblock %}
 
 {% block content %}
 
 <div class="mb-10">
-    <h2 class="text-3xl font-extrabold text-white mb-2">Espace employé</h2>
-    <p class="text-gray-400">Bonjour {{ user.username }}, voici vos accès rapides selon vos permissions.</p>
+    <h2 class="text-3xl font-extrabold text-white mb-2">{% translate "Espace employé" %}</h2>
+    <p class="text-gray-400">{% blocktranslate with name=user.username %}Bonjour {{ name }}, voici vos accès rapides selon vos permissions.{% endblocktranslate %}</p>
 </div>
 
 <div class="grid grid-cols-3 gap-6">
@@ -19,11 +21,11 @@
                 <div class="w-10 h-10 flex items-center justify-center rounded-full bg-pink-500/10 text-pink-500">
                     <i class="fa-solid fa-film"></i>
                 </div>
-                <h3 class="text-white font-bold text-lg">Films</h3>
+                <h3 class="text-white font-bold text-lg">{% translate "Films" %}</h3>
             </div>
             <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-pink-500 group-hover:translate-x-1 transition-all"></i>
         </div>
-        <p class="text-gray-400 text-sm">Consulter et gérer le catalogue de films.</p>
+        <p class="text-gray-400 text-sm">{% translate "Consulter et gérer le catalogue de films." %}</p>
     </a>
     {% endif %}
 
@@ -34,9 +36,9 @@
             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-cinema-red/10 text-cinema-red">
                 <i class="fa-solid fa-clapperboard"></i>
             </div>
-            <h3 class="text-white font-bold text-lg">Projections</h3>
+            <h3 class="text-white font-bold text-lg">{% translate "Projections" %}</h3>
         </div>
-        <p class="text-gray-400 text-sm">Bientôt disponible</p>
+        <p class="text-gray-400 text-sm">{% translate "Bientôt disponible" %}</p>
     </div>
     {% endif %}
 
@@ -47,9 +49,9 @@
             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
                 <i class="fa-solid fa-ticket"></i>
             </div>
-            <h3 class="text-white font-bold text-lg">Billets</h3>
+            <h3 class="text-white font-bold text-lg">{% translate "Billets" %}</h3>
         </div>
-        <p class="text-gray-400 text-sm">Bientôt disponible</p>
+        <p class="text-gray-400 text-sm">{% translate "Bientôt disponible" %}</p>
     </div>
     {% endif %}
 
@@ -60,9 +62,9 @@
             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-sky-500/10 text-sky-500">
                 <i class="fa-solid fa-envelope"></i>
             </div>
-            <h3 class="text-white font-bold text-lg">Messages de contact</h3>
+            <h3 class="text-white font-bold text-lg">{% translate "Messages de contact" %}</h3>
         </div>
-        <p class="text-gray-400 text-sm">Bientôt disponible</p>
+        <p class="text-gray-400 text-sm">{% translate "Bientôt disponible" %}</p>
     </div>
     {% endif %}
 
@@ -73,9 +75,9 @@
             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
                 <i class="fa-solid fa-users"></i>
             </div>
-            <h3 class="text-white font-bold text-lg">Utilisateurs</h3>
+            <h3 class="text-white font-bold text-lg">{% translate "Utilisateurs" %}</h3>
         </div>
-        <p class="text-gray-400 text-sm">Bientôt disponible</p>
+        <p class="text-gray-400 text-sm">{% translate "Bientôt disponible" %}</p>
     </div>
     {% endif %}
 
@@ -86,9 +88,9 @@
             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-violet-500/10 text-violet-500">
                 <i class="fa-solid fa-tags"></i>
             </div>
-            <h3 class="text-white font-bold text-lg">Genres</h3>
+            <h3 class="text-white font-bold text-lg">{% translate "Genres" %}</h3>
         </div>
-        <p class="text-gray-400 text-sm">Bientôt disponible</p>
+        <p class="text-gray-400 text-sm">{% translate "Bientôt disponible" %}</p>
     </div>
     {% endif %}
 

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}{% if object %}Modifier un film{% else %}Ajouter un film{% endif %}{% endblock %}
+{% load static i18n %}
+
+{% block title %}{% if object %}{% translate "Modifier un film" %}{% else %}{% translate "Ajouter un film" %}{% endif %}{% endblock %}
 
 {% block content %}
 
 <a href="{% url 'employee:movies' %}" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6">
-    <i class="fa-solid fa-arrow-left"></i>Retour à la liste
+    <i class="fa-solid fa-arrow-left"></i>{% translate "Retour à la liste" %}
 </a>
 
 <div class="max-w-4xl mx-auto bg-cinema-dark border border-white/10 border-t-4 border-t-pink-500 rounded-xl p-8">
@@ -17,9 +18,9 @@
         </div>
         <div>
             <h2 class="text-2xl font-bold text-white">
-                {% if object %}Modifier « {{ object.title }} »{% else %}Ajouter un film{% endif %}
+                {% if object %}{% blocktranslate with title=object.title %}Modifier « {{ title }} »{% endblocktranslate %}{% else %}{% translate "Ajouter un film" %}{% endif %}
             </h2>
-            <p class="text-gray-400 text-sm">Les champs marqués d'un * sont obligatoires.</p>
+            <p class="text-gray-400 text-sm">{% translate "Les champs marqués d'un * sont obligatoires." %}</p>
         </div>
     </div>
 
@@ -35,7 +36,7 @@
         <div class="grid grid-cols-3 gap-8">
 
             <!-- Colonne gauche : affiche -->
-            <div>
+            <div class="min-w-0">
                 <label for="{{ form.movie_poster.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
                     {{ form.movie_poster.label }}
                 </label>
@@ -46,10 +47,12 @@
                          class="w-full h-full object-cover {% if not object.movie_poster %}hidden{% endif %}">
                     <div id="poster-placeholder" class="text-center text-gray-600 {% if object.movie_poster %}hidden{% endif %}">
                         <i class="fa-solid fa-image text-4xl mb-2"></i>
-                        <p class="text-xs">Aucune affiche</p>
+                        <p class="text-xs">{% translate "Aucune affiche" %}</p>
                     </div>
                 </div>
-                {{ form.movie_poster }}
+                <div class="min-w-0 break-all text-sm">
+                    {{ form.movie_poster }}
+                </div>
                 {% if form.movie_poster.errors %}
                 <p class="text-red-400 text-xs mt-1">{{ form.movie_poster.errors.0 }}</p>
                 {% endif %}
@@ -62,7 +65,8 @@
                     <label for="{{ form.title.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
                         {{ form.title.label }} <span class="text-cinema-red">*</span>
                     </label>
-                    {{ form.title }}
+                    {{ form.title_fr }}
+                    {{ form.title_en }}
                     {% if form.title.errors %}
                     <p class="text-red-400 text-xs mt-1">{{ form.title.errors.0 }}</p>
                     {% endif %}
@@ -104,7 +108,8 @@
                     <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-1">
                         {{ form.description.label }} <span class="text-cinema-red">*</span>
                     </label>
-                    {{ form.description }}
+                    {{ form.description_fr }}
+                    {{ form.description_en }}
                     {% if form.description.errors %}
                     <p class="text-red-400 text-xs mt-1">{{ form.description.errors.0 }}</p>
                     {% endif %}
@@ -114,11 +119,11 @@
                 <div class="flex gap-3 pt-2">
                     <a href="{% url 'employee:movies' %}"
                        class="flex-1 text-center py-2.5 rounded-md bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition-colors">
-                        Annuler
+                        {% translate "Annuler" %}
                     </a>
                     <button type="submit"
                             class="flex-1 py-2.5 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
-                        {% if object %}Enregistrer{% else %}Ajouter le film{% endif %}
+                        {% if object %}{% translate "Enregistrer" %}{% else %}{% translate "Ajouter le film" %}{% endif %}
                     </button>
                 </div>
             </div>

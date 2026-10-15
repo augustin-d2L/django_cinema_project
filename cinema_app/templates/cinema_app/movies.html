@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Films{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate "Films" %}{% endblock %}
 
 {% block content %}
 
     {% load static %}
 
-<h2 class="text-3xl font-extrabold text-white mb-2">Nos films</h2>
-<p class="text-gray-400 mb-10">Découvrez la programmation actuelle et réservez votre séance.</p>
+<h2 class="text-3xl font-extrabold text-white mb-2">{% translate "Nos films" %}</h2>
+<p class="text-gray-400 mb-10">{% translate "Découvrez la programmation actuelle et réservez votre séance." %}</p>
 
 {% if page %}
 
@@ -36,7 +38,7 @@
                     </span>
                 </div>
                 {% else %}
-                <p class="text-gray-500 text-xs mb-3">Aucun genre</p>
+                <p class="text-gray-500 text-xs mb-3">{% translate "Aucun genre" %}</p>
                 {% endif %}
 
                 <span class="block text-center mt-2 px-4 py-2 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm group-hover:bg-red-700 transition-colors">
@@ -63,7 +65,7 @@
         {% endif %}
 
         <p class="text-gray-400 text-sm font-medium">
-            Page {{ page.number }} sur {{ page.paginator.num_pages }}
+            Page {{ page.number }} {% translate "sur" %} {{ page.paginator.num_pages }}
         </p>
 
         {% if page.has_next %}
@@ -83,7 +85,7 @@
 
     <div class="text-center py-20">
         <i class="fa-solid fa-film text-gray-700 text-5xl mb-4"></i>
-        <p class="text-gray-400">Aucun film disponible pour le moment.</p>
+        <p class="text-gray-400">{% translate "Aucun film disponible pour le moment." %}</p>
     </div>
 
 {% endif %}

@@ -1,31 +1,33 @@
 {% extends 'base.html' %}
-{% block title %}Accueil{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate "Accueil" %}{% endblock %}
 
 {% block content %}
 
 <!-- Bandeau d'accroche -->
 <div class="bg-cinema-dark border border-white/10 rounded-xl p-12 text-center mb-12">
     <i class="fa-solid fa-film text-cinema-red text-5xl mb-4"></i>
-    <h2 class="text-4xl font-extrabold text-white mb-3">Bienvenue au CinéApp</h2>
+    <h2 class="text-4xl font-extrabold text-white mb-3">{% translate "Bienvenue au CinéApp" %}</h2>
     <p class="text-gray-400 max-w-xl mx-auto mb-8">
-        Réservez vos places pour les meilleurs films en salle, en quelques clics.
+        {% translate "Réservez vos places pour les meilleurs films en salle, en quelques clics." %}
     </p>
     <div class="flex justify-center gap-4">
         <a href="{% url 'movies' %}"
            class="px-6 py-3 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
-            Voir les films
+            {% translate "Voir les films" %}
         </a>
         {% if not user.is_authenticated %}
         <a href="{% url 'register' %}"
            class="px-6 py-3 rounded-md bg-white/10 text-white font-bold uppercase tracking-wide text-sm hover:bg-white/20 transition-colors">
-            Créer un compte
+            {% translate "Créer un compte" %}
         </a>
         {% endif %}
     </div>
 </div>
 
 <!-- Prochaines séances -->
-<h3 class="text-2xl font-bold text-white mb-6">Prochaines séances</h3>
+<h3 class="text-2xl font-bold text-white mb-6">{% translate "Prochaines séances" %}</h3>
 
 {% if prochaines_seances %}
 <div class="grid grid-cols-3 gap-6">
@@ -38,17 +40,17 @@
         </p>
         <p class="text-gray-400 text-sm mb-4">
             <i class="fa-solid fa-door-open text-cinema-red mr-1"></i>
-            Salle {{ screening.cinema_room.number }}
+            {% blocktranslate with room=screening.cinema_room.number %}Salle {{ room }}{% endblocktranslate %}
         </p>
         <a href="{% url 'movie' screening.movie.id %}"
            class="block text-center px-4 py-2 rounded-md bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition-colors">
-            Voir le film
+            {% translate "Voir le film" %}
         </a>
     </div>
     {% endfor %}
 </div>
 {% else %}
-<p class="text-gray-500">Aucune séance à venir pour le moment.</p>
+<p class="text-gray-500">{% translate "Aucune séance à venir pour le moment." %}</p>
 {% endif %}
 
 {% endblock %}

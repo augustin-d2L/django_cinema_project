@@ -12,6 +12,7 @@ import datetime
 from .constants import PRIX_BILLET
 from employee_app.mixins import EMPLOYEE_GROUPS
 from django.utils import timezone
+from django.utils.translation import gettext as _
 
 
 #TODO : être authentifié pour faire une reservation utilisation de User
@@ -66,10 +67,10 @@ class ReservationView(LoginRequiredMixin, View):
                     seat_number=form.cleaned_data['seat_number'],
                 )
             except Exception:
-                messages.add_message(request, messages.ERROR, "Ce siège est déjà réservé pour cette projection.")
+                messages.add_message(request, messages.ERROR, _("Ce siège est déjà réservé pour cette projection."))
                 return render(request, 'cinema_app/reservation.html', {'form': form})
 
-            messages.add_message(request, messages.SUCCESS, "Réservation bien effectuée")
+            messages.add_message(request, messages.SUCCESS, _("Réservation bien effectuée"))
             return redirect('index')
 
         return render(request, 'cinema_app/reservation.html', {'form': form})
@@ -86,7 +87,7 @@ class ContactView(View):
             contact_message = ContactMessage(email_address=form['email_address'], message_content=form['message_content'])
             contact_message.save()
 
-            messages.add_message(request, messages.SUCCESS, "Message bien envoyé")
+            messages.add_message(request, messages.SUCCESS, _("Message bien envoyé"))
             return redirect('contact')
 
         return render(request, 'cinema_app/contact.html', {'form': form})
@@ -121,7 +122,7 @@ class RegisterView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.add_message(request, messages.SUCCESS, "Compte créé avec succès !")
+            messages.add_message(request, messages.SUCCESS, _("Compte créé avec succès !"))
             return redirect('index')
 
         return render(request, 'registration/register.html', {'form': form})
@@ -143,7 +144,7 @@ class AccountView(LoginRequiredMixin, View):
         form = UserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.SUCCESS, "Profil mis à jour.")
+            messages.add_message(request, messages.SUCCESS, _("Profil mis à jour."))
             return redirect('account')
 
         tickets = request.user.tickets.all().order_by('screening__screening_time')
@@ -164,9 +165,9 @@ class DeleteTicketView(LoginRequiredMixin, View):
         ticket = get_object_or_404(Ticket, pk=pk, person=request.user)
 
         if ticket.screening.screening_time < timezone.now():
-            messages.add_message(request, messages.ERROR, "Impossible d'annuler un billet pour une projection passée.")
+            messages.add_message(request, messages.ERROR, _("Impossible d'annuler un billet pour une projection passée."))
             return redirect('account')
 
         ticket.delete()
-        messages.add_message(request, messages.SUCCESS, "Billet annulé.")
+        messages.add_message(request, messages.SUCCESS, _("Billet annulé."))
         return redirect('account')

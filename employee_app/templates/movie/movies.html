@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Gestion des films{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate "Gestion des films" %}{% endblock %}
 
 {% block content %}
 
 <a href="{% url 'employee:dashboard' %}" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6">
-    <i class="fa-solid fa-arrow-left"></i>Retour à l'espace employé
+    <i class="fa-solid fa-arrow-left"></i>{% translate "Retour à l'espace employé" %}
 </a>
 
 <div class="flex items-center justify-between mb-8">
-    <h2 class="text-3xl font-extrabold text-white">Films</h2>
+    <h2 class="text-3xl font-extrabold text-white">{% translate "Films" %}</h2>
 
     {% if perms.cinema_app.add_movie %}
     <a href="{% url 'employee:movie_add' %}"
        class="px-4 py-2 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
-        <i class="fa-solid fa-plus mr-1"></i>Ajouter un film
+        <i class="fa-solid fa-plus mr-1"></i>{% translate "Ajouter un film" %}
     </a>
     {% endif %}
 </div>
@@ -23,11 +25,11 @@
     <table class="w-full text-sm">
         <thead class="bg-white/5 text-gray-400 uppercase text-xs tracking-wide">
             <tr>
-                <th class="text-left px-4 py-3">Titre</th>
-                <th class="text-left px-4 py-3">Genre</th>
-                <th class="text-left px-4 py-3">Durée</th>
-                <th class="text-left px-4 py-3">Sortie</th>
-                <th class="text-right px-4 py-3">Actions</th>
+                <th class="text-left px-4 py-3">{% translate "Titre" %}</th>
+                <th class="text-left px-4 py-3">{% translate "Genre" %}</th>
+                <th class="text-left px-4 py-3">{% translate "Durée" %}</th>
+                <th class="text-left px-4 py-3">{% translate "Sortie" %}</th>
+                <th class="text-right px-4 py-3">{% translate "Actions" %}</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-white/5">
@@ -65,7 +67,7 @@
     </a>
     {% endif %}
 
-    <p class="text-gray-400 text-sm">Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}</p>
+    <p class="text-gray-400 text-sm">{% translate "Page" %} {{ page_obj.number }} {% translate "sur" %} {{ page_obj.paginator.num_pages }}</p>
 
     {% if page_obj.has_next %}
     <a href="?page={{ page_obj.next_page_number }}"
@@ -77,7 +79,7 @@
 {% endif %}
 
 {% else %}
-<p class="text-gray-500 text-center py-16">Aucun film pour le moment.</p>
+<p class="text-gray-500 text-center py-16">{% translate "Aucun film pour le moment." %}</p>
 {% endif %}
 
 {% endblock %}

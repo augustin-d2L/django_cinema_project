@@ -6,3 +6,8 @@ from .mixins import EmployeeRequiredMixin
 class DashboardView(EmployeeRequiredMixin, View):
     def get(self, request):
         return render(request, 'employee_app/dashboard.html')
+
+
+class MoviesManagementView(EmployeeRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'employee_app/movies.html')

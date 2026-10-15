@@ -10,13 +10,3 @@ select option {
 input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
-
-.section-disabled span {
-    opacity: 0.4;
-    filter: grayscale(1);
-    cursor: not-allowed;
-}
-
-.section-disabled span:hover {
-    background-color: rgb(255 255 255 / 0.05);
-}

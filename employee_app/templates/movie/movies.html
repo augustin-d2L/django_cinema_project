@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Gestion des films{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'employee:dashboard' %}" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6">
+    <i class="fa-solid fa-arrow-left"></i>Retour à l'espace employé
+</a>
+
+<div class="flex items-center justify-between mb-8">
+    <h2 class="text-3xl font-extrabold text-white">Films</h2>
+
+    {% if perms.cinema_app.add_movie %}
+    <a href="{% url 'employee:movie_add' %}"
+       class="px-4 py-2 rounded-md bg-cinema-red text-white font-bold uppercase tracking-wide text-sm hover:bg-red-700 transition-colors">
+        <i class="fa-solid fa-plus mr-1"></i>Ajouter un film
+    </a>
+    {% endif %}
+</div>
+
+{% if movies %}
+<div class="bg-cinema-dark border border-white/10 rounded-xl overflow-hidden">
+    <table class="w-full text-sm">
+        <thead class="bg-white/5 text-gray-400 uppercase text-xs tracking-wide">
+            <tr>
+                <th class="text-left px-4 py-3">Titre</th>
+                <th class="text-left px-4 py-3">Genre</th>
+                <th class="text-left px-4 py-3">Durée</th>
+                <th class="text-left px-4 py-3">Sortie</th>
+                <th class="text-right px-4 py-3">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5">
+            {% for movie in movies %}
+            <tr class="hover:bg-white/5 transition-colors">
+                <td class="px-4 py-3 text-white font-medium">{{ movie.title }}</td>
+                <td class="px-4 py-3 text-gray-400">{{ movie.genre|default:"—" }}</td>
+                <td class="px-4 py-3 text-gray-400">{{ movie.duration }} min</td>
+                <td class="px-4 py-3 text-gray-400">{{ movie.release_date|date:"d/m/Y" }}</td>
+                <td class="px-4 py-3 text-right space-x-3">
+                    {% if perms.cinema_app.change_movie %}
+                    <a href="{% url 'employee:movie_add' movie.pk %}" class="text-gray-400 hover:text-white" title="Modifier">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    {% endif %}
+                    {% if perms.cinema_app.delete_movie %}
+                    <a href="{% url 'employee:movie_delete' movie.pk %}" class="text-red-400 hover:text-red-300" title="Supprimer">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination (fournie automatiquement par ListView via page_obj) -->
+{% if page_obj.has_other_pages %}
+<div class="flex items-center justify-center gap-4 mt-6">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}"
+       class="w-10 h-10 flex items-center justify-center rounded-md bg-white/5 text-gray-300 hover:bg-cinema-red hover:text-white transition-colors">
+        <i class="fa-solid fa-chevron-left"></i>
+    </a>
+    {% endif %}
+
+    <p class="text-gray-400 text-sm">Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}</p>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"
+       class="w-10 h-10 flex items-center justify-center rounded-md bg-white/5 text-gray-300 hover:bg-cinema-red hover:text-white transition-colors">
+        <i class="fa-solid fa-chevron-right"></i>
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+
+{% else %}
+<p class="text-gray-500 text-center py-16">Aucun film pour le moment.</p>
+{% endif %}
+
+{% endblock %}

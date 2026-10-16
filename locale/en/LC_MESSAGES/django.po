@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CinéApp 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-15 17:08-0400\n"
+"POT-Creation-Date: 2026-10-15 20:51-0400\n"
 "PO-Revision-Date: 2026-10-15 17:15-0400\n"
 "Last-Translator: Augustin Dellisse\n"
 "Language-Team: English\n"
@@ -264,13 +264,21 @@ msgstr "You cannot cancel a ticket for a past screening."
 msgid "Billet annulé."
 msgstr "Ticket cancelled."
 
-#: .\django_cinema_project_2630720\settings.py:116
+#: .\django_cinema_project_2630720\settings.py:118
 msgid "Français"
 msgstr "French"
 
-#: .\django_cinema_project_2630720\settings.py:117
+#: .\django_cinema_project_2630720\settings.py:119
 msgid "Anglais"
 msgstr "English"
+
+#: .\employee_app\mixins.py:24 .\employee_app\mixins.py:38
+msgid "Accès réservé aux employés."
+msgstr "Access restricted to employees."
+
+#: .\employee_app\mixins.py:36
+msgid "Vous n'avez pas la permission d'effectuer cette action."
+msgstr "You do not have permission to perform this action."
 
 #: .\employee_app\templates\employee_app\dashboard.html:4
 #: .\employee_app\templates\employee_app\dashboard.html:9
@@ -333,7 +341,7 @@ msgstr ""
 "will also be deleted."
 
 #: .\employee_app\templates\movie\movie_delete.html:19
-#: .\employee_app\templates\movie\movie_form.html:120
+#: .\employee_app\templates\movie\movie_form.html:122
 msgid "Annuler"
 msgstr "Cancel"
 
@@ -368,11 +376,11 @@ msgstr "Fields marked with * are required."
 msgid "Aucune affiche"
 msgstr "No poster"
 
-#: .\employee_app\templates\movie\movie_form.html:124
+#: .\employee_app\templates\movie\movie_form.html:126
 msgid "Enregistrer"
 msgstr "Save"
 
-#: .\employee_app\templates\movie\movie_form.html:124
+#: .\employee_app\templates\movie\movie_form.html:126
 msgid "Ajouter le film"
 msgstr "Add the movie"
 

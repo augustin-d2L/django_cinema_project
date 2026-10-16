@@ -3,7 +3,7 @@ from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-from .mixins import EmployeeRequiredMixin
+from .mixins import EmployeeRequiredMixin, EmployeePermissionMixin
 from .forms import MovieForm
 from cinema_app.models import Movie
 
@@ -13,7 +13,7 @@ class DashboardView(EmployeeRequiredMixin, View):
         return render(request, 'employee_app/dashboard.html')
 
 
-class MovieListView(EmployeeRequiredMixin, ListView):
+class MovieListView(EmployeePermissionMixin, ListView):
     queryset = Movie.objects.select_related('genre')
     template_name = 'movie/movies.html'
     context_object_name = 'movies'
@@ -26,7 +26,7 @@ class MovieListView(EmployeeRequiredMixin, ListView):
 
 
 
-class MovieCreateView(EmployeeRequiredMixin, SuccessMessageMixin, CreateView):
+class MovieCreateView(EmployeePermissionMixin, SuccessMessageMixin, CreateView):
     permission_required = 'cinema_app.add_movie'
     model = Movie
     form_class = MovieForm
@@ -35,7 +35,7 @@ class MovieCreateView(EmployeeRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = "Le film « %(title)s » a été ajouté."
 
 
-class MovieUpdateView(EmployeeRequiredMixin, SuccessMessageMixin, UpdateView):
+class MovieUpdateView(EmployeePermissionMixin, SuccessMessageMixin, UpdateView):
     permission_required = 'cinema_app.change_movie'
     model = Movie
     form_class = MovieForm
@@ -44,7 +44,7 @@ class MovieUpdateView(EmployeeRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = "Le film « %(title)s » a été Modifié."
 
 
-class MovieDeleteView(EmployeeRequiredMixin, SuccessMessageMixin, DeleteView):
+class MovieDeleteView(EmployeePermissionMixin, SuccessMessageMixin, DeleteView):
     permission_required = 'cinema_app.delete_movie'
     model = Movie
     template_name = 'movie/movie_delete.html'

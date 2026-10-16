@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-#from django.http import Http404 voir demo_app
+from django.shortcuts import get_object_or_404
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import View
 from django.core.paginator import Paginator
@@ -108,7 +108,7 @@ class MovieView(View):
     model = Movie
 
     def get(self, request, pk):
-        movie = Movie.objects.prefetch_related('genre').get(pk=pk) 
+        movie = get_object_or_404(Movie.objects.select_related('genre'), pk=pk)
         return render(request, 'cinema_app/movie.html', {'movie': movie})
 
 

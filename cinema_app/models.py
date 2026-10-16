@@ -35,7 +35,7 @@ class CinemaRoom(models.Model):
     capacity = models.PositiveIntegerField(verbose_name="Capacité")
 
     def __str__(self):
-        return str(f"{self.number} - Capacité de {self.capacity}")
+        return str(f"{self.number} - {self.capacity}")
 
     class Meta:
         ordering = ('number', )

@@ -65,6 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cinema_app.context_processors.cinema_info',
+                'cinema_app.context_processors.employee_access',
             ],
         },
     },

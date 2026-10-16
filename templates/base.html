@@ -66,7 +66,7 @@
 
                     {% if user.is_authenticated %}
 
-                        {% if perms.cinema_app.access_employee %}
+                        {% if is_employee %}
                         <a href="{% url 'employee:dashboard' %}"
                            class="ml-3 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide bg-cinema-red text-white hover:bg-red-700 transition-colors shadow shadow-red-900/40">
                             {% translate "Espace employé" %}
@@ -183,7 +183,7 @@
 
             <div class="border-t border-white/10 pt-6 text-center">
                 <p class="text-xs text-gray-500">
-                    Copyright &copy; Augustin Dellisse 2026
+                    Copyright &copy; Augustin Dellisse {{ current_year }}
                 </p>
             </div>
         </div>

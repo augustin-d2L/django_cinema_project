@@ -1,0 +1,644 @@
+[
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "réceptionniste",
+    "permissions": [
+      [
+        "view_contactmessage",
+        "cinema_app",
+        "contactmessage"
+      ],
+      [
+        "view_genre",
+        "cinema_app",
+        "genre"
+      ],
+      [
+        "view_movie",
+        "cinema_app",
+        "movie"
+      ],
+      [
+        "add_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "change_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "view_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "add_ticket",
+        "cinema_app",
+        "ticket"
+      ],
+      [
+        "change_ticket",
+        "cinema_app",
+        "ticket"
+      ],
+      [
+        "delete_ticket",
+        "cinema_app",
+        "ticket"
+      ],
+      [
+        "view_ticket",
+        "cinema_app",
+        "ticket"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "administrateur",
+    "permissions": [
+      [
+        "add_user",
+        "auth",
+        "user"
+      ],
+      [
+        "change_user",
+        "auth",
+        "user"
+      ],
+      [
+        "delete_user",
+        "auth",
+        "user"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ],
+      [
+        "add_cinemaroom",
+        "cinema_app",
+        "cinemaroom"
+      ],
+      [
+        "change_cinemaroom",
+        "cinema_app",
+        "cinemaroom"
+      ],
+      [
+        "delete_cinemaroom",
+        "cinema_app",
+        "cinemaroom"
+      ],
+      [
+        "view_cinemaroom",
+        "cinema_app",
+        "cinemaroom"
+      ],
+      [
+        "view_contactmessage",
+        "cinema_app",
+        "contactmessage"
+      ],
+      [
+        "add_genre",
+        "cinema_app",
+        "genre"
+      ],
+      [
+        "change_genre",
+        "cinema_app",
+        "genre"
+      ],
+      [
+        "delete_genre",
+        "cinema_app",
+        "genre"
+      ],
+      [
+        "view_genre",
+        "cinema_app",
+        "genre"
+      ],
+      [
+        "add_movie",
+        "cinema_app",
+        "movie"
+      ],
+      [
+        "change_movie",
+        "cinema_app",
+        "movie"
+      ],
+      [
+        "delete_movie",
+        "cinema_app",
+        "movie"
+      ],
+      [
+        "view_movie",
+        "cinema_app",
+        "movie"
+      ],
+      [
+        "add_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "change_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "delete_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "view_screening",
+        "cinema_app",
+        "screening"
+      ],
+      [
+        "add_ticket",
+        "cinema_app",
+        "ticket"
+      ],
+      [
+        "change_ticket",
+        "cinema_app",
+        "ticket"
+      ],
+      [
+        "delete_ticket",
+        "cinema_app",
+        "ticket"
+      ],
+      [
+        "view_ticket",
+        "cinema_app",
+        "ticket"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$EHCXWrXzv6ogrV8PH128h6$v6WtqsF+H8bZ7+e/s354LXubEitEGECAA8HBRzSJiVw=",
+    "last_login": "2026-10-16T01:11:23.455Z",
+    "is_superuser": true,
+    "username": "2630720",
+    "first_name": "Augustin",
+    "last_name": "Dellisse",
+    "email": "2630720@etu.cchic.ca",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-22T14:00:57Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$WoRzHm7gasRBnVTTTUwnI8$6ZU/yI11OKnsTTAhTupg2WA6EfM/ed98dtC1kFvdBl4=",
+    "last_login": "2026-10-16T01:09:56Z",
+    "is_superuser": false,
+    "username": "receptionniste",
+    "first_name": "",
+    "last_name": "",
+    "email": "azerty@com.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-16T01:09:38Z",
+    "groups": [
+      [
+        "réceptionniste"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$ImYhuXCKQCSdqKnyqR3KXQ$ZGXaigOgD1nj6rP9Wip5V+QMGexGA4cvMtfmzO/9/Ts=",
+    "last_login": "2026-10-16T01:10:50Z",
+    "is_superuser": false,
+    "username": "administrateur",
+    "first_name": "",
+    "last_name": "",
+    "email": "azerty@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-16T01:10:49Z",
+    "groups": [
+      [
+        "administrateur"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$B7XU6lAcnRmKJ2ukh4NiiF$CcruPAmMx/uAZEk7JLPd7n/AfSWghotf4MoegwZvN24=",
+    "last_login": "2026-10-16T01:12:59.494Z",
+    "is_superuser": false,
+    "username": "client",
+    "first_name": "",
+    "last_name": "",
+    "email": "azerty@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-16T01:12:59.300Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 1,
+  "fields": {
+    "name": "Horreur",
+    "name_fr": "Horreur",
+    "name_en": "Horror"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 2,
+  "fields": {
+    "name": "Animation",
+    "name_fr": "Animation",
+    "name_en": "Animation"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 3,
+  "fields": {
+    "name": "Aventure",
+    "name_fr": "Aventure",
+    "name_en": "Adventure"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 4,
+  "fields": {
+    "name": "Comédie",
+    "name_fr": "Comédie",
+    "name_en": "Comedy"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 5,
+  "fields": {
+    "name": "Action",
+    "name_fr": "Action",
+    "name_en": "Action"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 6,
+  "fields": {
+    "name": "Documentaire",
+    "name_fr": "Documentaire",
+    "name_en": "Documentary"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 7,
+  "fields": {
+    "name": "Fantastique",
+    "name_fr": "Fantastique",
+    "name_en": "Fantasy"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 8,
+  "fields": {
+    "name": "Historique",
+    "name_fr": "Historique",
+    "name_en": "Historical"
+  }
+},
+{
+  "model": "cinema_app.genre",
+  "pk": 9,
+  "fields": {
+    "name": "Humour",
+    "name_fr": "Humour",
+    "name_en": "Humor"
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 1,
+  "fields": {
+    "title": "Resident Evil",
+    "title_fr": "Resident Evil",
+    "title_en": "Resident Evil",
+    "description": "De l’imagination du cinéaste visionnaire Zach Cregger (Heure de disparition, Barbarian) naît une réinvention palpitante – et terrifiante – de la franchise Resident Evil. Dans une histoire inédite, le film suit Bryan (Austin Abrams), un coursier médical qui se retrouve plongé malgré lui dans une course contre la montre haletante pour sa survie, lors d'une nuit fatidique et terrifiante qui bascule petit à petit dans le chaos.",
+    "description_fr": "De l’imagination du cinéaste visionnaire Zach Cregger (Heure de disparition, Barbarian) naît une réinvention palpitante – et terrifiante – de la franchise Resident Evil. Dans une histoire inédite, le film suit Bryan (Austin Abrams), un coursier médical qui se retrouve plongé malgré lui dans une course contre la montre haletante pour sa survie, lors d'une nuit fatidique et terrifiante qui bascule petit à petit dans le chaos.",
+    "description_en": "From the imagination of visionary filmmaker Zach Cregger (Disappearance Hour, Barbarian) comes a thrilling—and terrifying—reimagining of the Resident Evil franchise. In an all-new story, the film follows Bryan (Austin Abrams), a medical courier who finds himself unwittingly thrust into a breathless race against time for his survival during a fateful and terrifying night that gradually descends into chaos.",
+    "duration": 91,
+    "release_date": "2026-09-18",
+    "movie_poster": "movie_posters/ResidentEvil.jpg",
+    "genre": 1
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 2,
+  "fields": {
+    "title": "Backrooms : les arrière-salles",
+    "title_fr": "Backrooms : les arrière-salles",
+    "title_en": "Backrooms",
+    "description": "Propriétaire d’un magasin de meubles auquel il se consacre corps et âme, Clark surmonte difficilement sa récente rupture avec sa femme. Il consulte régulièrement une psychologue, Mary Kline, qui cherche à susciter chez lui des réflexes d’introspection. Une nuit, au hasard de ses tentatives pour faire fonctionner les disjoncteurs défectueux situés au sous-sol de son commerce, il est aspiré par le mur et se retrouve dans une arrière-salle souterraine dont il ne soupçonnait pas l’existence. Ce lieu, où sont empilés des meubles provenant de sa boutique, débouche sur une enfilade de pièces qui forment une sorte de labyrinthe d’où émanent des voix bizarres et surgissent des silhouettes inquiétantes. Affolé, Clark parvient à retraverser dans son magasin, puis confie sa découverte à Mary, qui demeure sceptique. Il décide donc d’y retourner avec deux employés armés d’une caméra, afin de lui fournir la preuve de ses affirmations.",
+    "description_fr": "Propriétaire d’un magasin de meubles auquel il se consacre corps et âme, Clark surmonte difficilement sa récente rupture avec sa femme. Il consulte régulièrement une psychologue, Mary Kline, qui cherche à susciter chez lui des réflexes d’introspection. Une nuit, au hasard de ses tentatives pour faire fonctionner les disjoncteurs défectueux situés au sous-sol de son commerce, il est aspiré par le mur et se retrouve dans une arrière-salle souterraine dont il ne soupçonnait pas l’existence. Ce lieu, où sont empilés des meubles provenant de sa boutique, débouche sur une enfilade de pièces qui forment une sorte de labyrinthe d’où émanent des voix bizarres et surgissent des silhouettes inquiétantes. Affolé, Clark parvient à retraverser dans son magasin, puis confie sa découverte à Mary, qui demeure sceptique. Il décide donc d’y retourner avec deux employés armés d’une caméra, afin de lui fournir la preuve de ses affirmations.",
+    "description_en": "As the owner of a furniture store to which he devotes himself body and soul, Clark is struggling to get over his recent breakup with his wife. He regularly sees a psychologist, Mary Kline, who tries to encourage him to engage in self-reflection. One night, while trying to fix the faulty circuit breakers in the basement of his store, he is sucked through the wall and finds himself in an underground back room he never knew existed. This place, where furniture from his store is piled up, leads to a series of rooms forming a sort of labyrinth from which strange voices emanate and unsettling silhouettes emerge. Panicked, Clark manages to make his way back to his store, then tells Mary about his discovery, but she remains skeptical. He therefore decides to return there with two employees armed with a camera, in order to provide her with proof of his claims.",
+    "duration": 111,
+    "release_date": "2026-05-29",
+    "movie_poster": "movie_posters/Backrooms.jpg",
+    "genre": 1
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 3,
+  "fields": {
+    "title": "L'île de l'oubli",
+    "title_fr": "L'île de l'oubli",
+    "title_en": "Forgotten Island",
+    "description": "Alors qu'elles fêtent leur dernière nuit ensemble, Jo et Raissa découvrent un portail mystérieux qui les transporte sur l'île fantastique de Nakali, peuplée de créatures magiques et mythologiques dont leurs familles philippines leur ont raconté l'histoire durant leur enfance.\r\nCertaines de ces créatures deviendront des amies, d'autres des ennemies. Accompagnées de Raww (Dave Franco), un loup-garou bien intentionné mais maladroit, et d'une petite mais courageuse bande d'amis, Jo et Raissa doivent affronter la redoutable Manananggal (Lea Salonga), la créature la plus terrifiante de l'île. Lorsqu'elles découvrent que le prix à payer pour rentrer chez elles est de perdre les souvenirs de leur amitié, Jo et Raissa se lancent dans une course contre la montre pour trouver un moyen de quitter l'île avant de s'oublier à jamais.",
+    "description_fr": "Alors qu'elles fêtent leur dernière nuit ensemble, Jo et Raissa découvrent un portail mystérieux qui les transporte sur l'île fantastique de Nakali, peuplée de créatures magiques et mythologiques dont leurs familles philippines leur ont raconté l'histoire durant leur enfance.\r\nCertaines de ces créatures deviendront des amies, d'autres des ennemies. Accompagnées de Raww (Dave Franco), un loup-garou bien intentionné mais maladroit, et d'une petite mais courageuse bande d'amis, Jo et Raissa doivent affronter la redoutable Manananggal (Lea Salonga), la créature la plus terrifiante de l'île. Lorsqu'elles découvrent que le prix à payer pour rentrer chez elles est de perdre les souvenirs de leur amitié, Jo et Raissa se lancent dans une course contre la montre pour trouver un moyen de quitter l'île avant de s'oublier à jamais.",
+    "description_en": "As they celebrate their last night together, Jo and Raissa discover a mysterious portal that transports them to the fantastical island of Nakali, populated by magical and mythological creatures whose stories their Filipino families told them when they were children.\r\nSome of these creatures will become friends, others enemies. Accompanied by Raww (Dave Franco), a well-meaning but clumsy werewolf, and a small but brave band of friends, Jo and Raissa must face the fearsome Manananggal (Lea Salonga), the island’s most terrifying creature. When they discover that the price they must pay to return home is losing their memories of their friendship, Jo and Raissa embark on a race against time to find a way off the island before they forget each other forever.",
+    "duration": 109,
+    "release_date": "2026-09-25",
+    "movie_poster": "movie_posters/LIleDeLOubli.jpg",
+    "genre": 2
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 4,
+  "fields": {
+    "title": "Au coeur de la bête",
+    "title_fr": "Au coeur de la bête",
+    "title_en": "Heart of the Beast",
+    "description": "À la suite d’un écrasement d’avion catastrophique, l’officier des Forces Spéciales James Belmont (Brad Pitt) et son chien de combat, Odin, se retrouvent isolés en pleine nature, aux confins de l’Alaska. Du réalisateur réputé David Ayer, le film est un thriller d’aventure d’une grande intensité qui explore le lien indéfectible qui unit un homme et son meilleur ami, alors qu’ils font face au plus grand défi de leur vie.",
+    "description_fr": "À la suite d’un écrasement d’avion catastrophique, l’officier des Forces Spéciales James Belmont (Brad Pitt) et son chien de combat, Odin, se retrouvent isolés en pleine nature, aux confins de l’Alaska. Du réalisateur réputé David Ayer, le film est un thriller d’aventure d’une grande intensité qui explore le lien indéfectible qui unit un homme et son meilleur ami, alors qu’ils font face au plus grand défi de leur vie.",
+    "description_en": "Following a catastrophic plane crash, Special Forces officer James Belmont (Brad Pitt) and his combat dog, Odin, find themselves stranded in the wilderness on the edge of Alaska. From acclaimed director David Ayer, the film is a high-intensity adventure thriller that explores the unbreakable bond between a man and his best friend as they face the greatest challenge of their lives.",
+    "duration": 102,
+    "release_date": "2026-09-25",
+    "movie_poster": "movie_posters/AuCoeurDeLaBete.jpg",
+    "genre": 5
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 5,
+  "fields": {
+    "title": "Pauline Julien : Femme pays",
+    "title_fr": "Pauline Julien : Femme pays",
+    "title_en": null,
+    "description": "Une femme perd la parole, à l’image d’un pays qui la perd en même temps qu’elle. Pauline Julien, chanteuse flamboyante, véritable icône poétique et politique, a laissé de nombreuses empreintes en nous. Nous la suivons autant dans ses triomphes sur scène, dans ses prises de position pour l’émancipation du pays du Québec, que dans des moments d’intimité absolue auprès de ses enfants, mais surtout, au cœur de son histoire d’amour incandescente avec Gérald Godin. Le film l’attrape au moment où elle apprend le diagnostic d’aphasie dégénérative qui lui arrachera la parole. Nous remontons le fil d’une vie faite de lumière, de travail, d’amour et de déchirements. Pauline danse, Pauline aime, Pauline gueule, Pauline baise, Pauline brûle. Pauline vit. Pauline meurt. Que nous reste-t-il d’elle?",
+    "description_fr": "Une femme perd la parole, à l’image d’un pays qui la perd en même temps qu’elle. Pauline Julien, chanteuse flamboyante, véritable icône poétique et politique, a laissé de nombreuses empreintes en nous. Nous la suivons autant dans ses triomphes sur scène, dans ses prises de position pour l’émancipation du pays du Québec, que dans des moments d’intimité absolue auprès de ses enfants, mais surtout, au cœur de son histoire d’amour incandescente avec Gérald Godin. Le film l’attrape au moment où elle apprend le diagnostic d’aphasie dégénérative qui lui arrachera la parole. Nous remontons le fil d’une vie faite de lumière, de travail, d’amour et de déchirements. Pauline danse, Pauline aime, Pauline gueule, Pauline baise, Pauline brûle. Pauline vit. Pauline meurt. Que nous reste-t-il d’elle?",
+    "description_en": "A woman loses her voice, mirroring a country that loses its own voice along with her. Pauline Julien, a flamboyant singer and a true poetic and political icon, has left a lasting mark on us all. We follow her through her triumphs on stage, her advocacy for the emancipation of Quebec, and moments of absolute intimacy with her children—but above all, into the heart of her fiery love story with Gérald Godin. The film captures her at the moment she learns of her diagnosis of degenerative aphasia, a condition that will rob her of her speech. We retrace the thread of a life made up of light, work, love, and heartbreak. Pauline dances, Pauline loves, Pauline screams, Pauline makes love, Pauline burns. Pauline lives. Pauline dies. What remains of her for us?",
+    "duration": 110,
+    "release_date": "2026-09-25",
+    "movie_poster": "movie_posters/PaulineJulienFemmePays.jpg",
+    "genre": 6
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 6,
+  "fields": {
+    "title": "Lutt Mubarak",
+    "title_fr": "Lutt Mubarak",
+    "title_en": "Lutt Mubarak",
+    "description": "Shubh est un jeune homme honnête menant une vie paisible jusqu'au jour où sa mère est faussement accusée de vol et publiquement humiliée par un bijoutier corrompu. Déterminé à laver l'honneur de sa mère et à restaurer la dignité de sa famille, Shubh décide de se battre pour faire éclater la vérité. Pour mener à bien sa quête, il s'allie avec une détective nommée Nyamat. Ensemble, ils s'infiltrent dans un réseau criminel particulièrement dangereux, rythmé par la cupidité, les trahisons et les combines élaborées. Le film bascule alors dans une comédie situationnelle dynamique mêlant chaos, rivalités, esprit de vengeance et stratagèmes complexes pour faire tomber les coupables.",
+    "description_fr": "Shubh est un jeune homme honnête menant une vie paisible jusqu'au jour où sa mère est faussement accusée de vol et publiquement humiliée par un bijoutier corrompu. Déterminé à laver l'honneur de sa mère et à restaurer la dignité de sa famille, Shubh décide de se battre pour faire éclater la vérité. Pour mener à bien sa quête, il s'allie avec une détective nommée Nyamat. Ensemble, ils s'infiltrent dans un réseau criminel particulièrement dangereux, rythmé par la cupidité, les trahisons et les combines élaborées. Le film bascule alors dans une comédie situationnelle dynamique mêlant chaos, rivalités, esprit de vengeance et stratagèmes complexes pour faire tomber les coupables.",
+    "description_en": "Shubh is an honest young man leading a peaceful life until the day his mother is falsely accused of theft and publicly humiliated by a corrupt jeweler. Determined to clear his mother’s name and restore his family’s dignity, Shubh decides to fight to bring the truth to light. To carry out his quest, he teams up with a detective named Nyamat. Together, they infiltrate a particularly dangerous criminal network driven by greed, betrayal, and elaborate schemes. The film then shifts into a dynamic situational comedy blending chaos, rivalries, a thirst for revenge, and complex stratagems to bring the culprits to justice.",
+    "duration": 130,
+    "release_date": "2026-09-25",
+    "movie_poster": "movie_posters/LuttMubarak.jpg",
+    "genre": 4
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 7,
+  "fields": {
+    "title": "L'odyssée",
+    "title_fr": "L'odyssée",
+    "title_en": "The Odyssey",
+    "description": "Le film suit Ulysse dans son périlleux voyage de retour après la guerre de Troie, mettant en vedette ses rencontres avec Polyphème, les sirènes, Circé et se terminant par ses retrouvailles avec sa femme, Pénélope.",
+    "description_fr": "Le film suit Ulysse dans son périlleux voyage de retour après la guerre de Troie, mettant en vedette ses rencontres avec Polyphème, les sirènes, Circé et se terminant par ses retrouvailles avec sa femme, Pénélope.",
+    "description_en": "The film follows Odysseus on his perilous journey home after the Trojan War, featuring his encounters with Polyphemus, the Sirens, and Circe, and culminating in his reunion with his wife, Penelope.",
+    "duration": 172,
+    "release_date": "2026-07-17",
+    "movie_poster": "movie_posters/LOdyssee.jpg",
+    "genre": 7
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 8,
+  "fields": {
+    "title": "Spider-Man : un jour nouveau",
+    "title_fr": "Spider-Man : un jour nouveau",
+    "title_en": "Spider-Man: Brand New Day",
+    "description": "Quatre ans se sont écoulés depuis les événements de « No Way Home », et Peter est désormais un adulte vivant seul, ayant volontairement disparu de la vie et des souvenirs de ceux qu'il aime. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de sa ville – Spider-Man à plein temps – mais à mesure que les exigences s'intensifient, la pression provoque une évolution physique surprenante qui menace son existence, tandis qu'un nouveau mode opératoire criminel étrange donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+    "description_fr": "Quatre ans se sont écoulés depuis les événements de « No Way Home », et Peter est désormais un adulte vivant seul, ayant volontairement disparu de la vie et des souvenirs de ceux qu'il aime. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de sa ville – Spider-Man à plein temps – mais à mesure que les exigences s'intensifient, la pression provoque une évolution physique surprenante qui menace son existence, tandis qu'un nouveau mode opératoire criminel étrange donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+    "description_en": "Four years have passed since the events of “No Way Home,” and Peter is now an adult living on his own, having voluntarily disappeared from the lives and memories of those he loves. Fighting crime in a New York City that no longer recognizes him, he devotes himself entirely to protecting his city—as a full-time Spider-Man—but as the demands intensify, the pressure triggers a surprising physical transformation that threatens his very existence, while a strange new criminal modus operandi gives rise to one of the most formidable threats he has ever faced.",
+    "duration": 145,
+    "release_date": "2026-07-31",
+    "movie_poster": "movie_posters/SpiderManUnJourNouveau.jpg",
+    "genre": 3
+  }
+},
+{
+  "model": "cinema_app.movie",
+  "pk": 9,
+  "fields": {
+    "title": "La bataille de Gaulle : Liberté (partie 2)",
+    "title_fr": "La bataille de Gaulle : Liberté (partie 2)",
+    "title_en": "De Gaulle – Part Two: Liberty",
+    "description": "Juin 1940. La France s'effondre et signe l’armistice. Au milieu du chaos, un homme refuse de céder. Seul contre tous, ce général inconnu s'échappe vers Londres pour sauver ce qu'il reste d'un rêve : la liberté.Sans armée, sans appui, sans espoir. Mais avec une folle conviction : la France, sa France, n'a pas déposé les armes. Il tente un ultime pari : convaincre le monde que la bataille de France n'est ni terminée, ni perdue.La réalité est têtue, et lui donne tort. Mais peu à peu se lèvent autour de lui en Angleterre, en France et en Afrique des résistants de l'ombre, des lycéens révoltés, des soldats déterminés. Leur foi, leur audace, leur rage de liberté défient l'Histoire qui semblait pourtant écrite d’avance.",
+    "description_fr": "Juin 1940. La France s'effondre et signe l’armistice. Au milieu du chaos, un homme refuse de céder. Seul contre tous, ce général inconnu s'échappe vers Londres pour sauver ce qu'il reste d'un rêve : la liberté.Sans armée, sans appui, sans espoir. Mais avec une folle conviction : la France, sa France, n'a pas déposé les armes. Il tente un ultime pari : convaincre le monde que la bataille de France n'est ni terminée, ni perdue.La réalité est têtue, et lui donne tort. Mais peu à peu se lèvent autour de lui en Angleterre, en France et en Afrique des résistants de l'ombre, des lycéens révoltés, des soldats déterminés. Leur foi, leur audace, leur rage de liberté défient l'Histoire qui semblait pourtant écrite d’avance.",
+    "description_en": "June 1940. France collapses and signs the armistice. Amid the chaos, one man refuses to give in. Alone against all odds, this unknown general flees to London to save what remains of a dream: freedom. Without an army, without support, without hope. But with a fierce conviction: France—his France—has not laid down its arms. He takes one last gamble: to convince the world that the Battle of France is neither over nor lost. Reality is stubborn, and proves him wrong. But little by little, people rise up around",
+    "duration": 158,
+    "release_date": "2026-09-11",
+    "movie_poster": "movie_posters/LaBatailleDeGaulleLiberte.jpg",
+    "genre": 8
+  }
+},
+{
+  "model": "cinema_app.cinemaroom",
+  "pk": 1,
+  "fields": {
+    "number": 1,
+    "capacity": 200
+  }
+},
+{
+  "model": "cinema_app.cinemaroom",
+  "pk": 2,
+  "fields": {
+    "number": 2,
+    "capacity": 150
+  }
+},
+{
+  "model": "cinema_app.cinemaroom",
+  "pk": 3,
+  "fields": {
+    "number": 3,
+    "capacity": 200
+  }
+},
+{
+  "model": "cinema_app.cinemaroom",
+  "pk": 4,
+  "fields": {
+    "number": 4,
+    "capacity": 150
+  }
+},
+{
+  "model": "cinema_app.cinemaroom",
+  "pk": 5,
+  "fields": {
+    "number": 5,
+    "capacity": 300
+  }
+},
+{
+  "model": "cinema_app.cinemaroom",
+  "pk": 6,
+  "fields": {
+    "number": 10,
+    "capacity": 3
+  }
+},
+{
+  "model": "cinema_app.screening",
+  "pk": 7,
+  "fields": {
+    "movie": 4,
+    "cinema_room": 4,
+    "screening_time": "2026-12-31T15:00:00Z"
+  }
+},
+{
+  "model": "cinema_app.screening",
+  "pk": 8,
+  "fields": {
+    "movie": 8,
+    "cinema_room": 1,
+    "screening_time": "2026-12-13T03:00:00Z"
+  }
+},
+{
+  "model": "cinema_app.screening",
+  "pk": 9,
+  "fields": {
+    "movie": 7,
+    "cinema_room": 6,
+    "screening_time": "2026-12-04T22:00:00Z"
+  }
+},
+{
+  "model": "cinema_app.screening",
+  "pk": 10,
+  "fields": {
+    "movie": 6,
+    "cinema_room": 4,
+    "screening_time": "2027-01-08T16:00:00Z"
+  }
+},
+{
+  "model": "cinema_app.ticket",
+  "pk": 7,
+  "fields": {
+    "screening": 7,
+    "price": "12.50",
+    "seat_number": "A15",
+    "person": [
+      "client"
+    ],
+    "status": "RE"
+  }
+},
+{
+  "model": "cinema_app.ticket",
+  "pk": 8,
+  "fields": {
+    "screening": 8,
+    "price": "12.50",
+    "seat_number": "B08",
+    "person": [
+      "client"
+    ],
+    "status": "RE"
+  }
+},
+{
+  "model": "cinema_app.ticket",
+  "pk": 9,
+  "fields": {
+    "screening": 9,
+    "price": "12.50",
+    "seat_number": "F16",
+    "person": [
+      "client"
+    ],
+    "status": "RE"
+  }
+},
+{
+  "model": "cinema_app.ticket",
+  "pk": 10,
+  "fields": {
+    "screening": 10,
+    "price": "12.50",
+    "seat_number": "A20",
+    "person": [
+      "client"
+    ],
+    "status": "RE"
+  }
+},
+{
+  "model": "cinema_app.contactmessage",
+  "pk": 1,
+  "fields": {
+    "email_address": "bob@gmail.com",
+    "message_content": "test 1er message"
+  }
+}
+]

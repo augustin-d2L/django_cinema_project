@@ -7,7 +7,7 @@ from .mixins import EmployeeRequiredMixin, EmployeePermissionMixin
 from .forms import MovieForm
 from cinema_app.models import Movie
 
-#TODO : mettre dans toutes les classes de vues le mixin EmployeeRequiredMixin pour restreindre l'accès aux employés
+
 class DashboardView(EmployeeRequiredMixin, View):
     def get(self, request):
         return render(request, 'employee_app/dashboard.html')

@@ -15,11 +15,6 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 
 
-#TODO : être authentifié pour faire une reservation utilisation de User
-#TODO : quand on clique sur reserver depuis un film on préremplis le formulaire avec lui
-#TODO : mettre try except pour chaque interaction DB
-#TODO movieView : si le film n'existe pas erreur releve utiliser try except DoesNotExist 
-
 class IndexView(View):
     def get(self, request):
         prochaines_seances = Screening.objects.select_related('movie', 'cinema_room').filter(

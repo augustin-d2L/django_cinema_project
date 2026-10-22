@@ -11,5 +11,6 @@ urlpatterns = [
     path('film/<int:pk>', views.MovieView.as_view(), name='movie'),
     path('inscription', views.RegisterView.as_view(), name='register'),
     path('compte', views.AccountView.as_view(), name='account'),
+    path('compte/mot-de-passe', views.ChangePasswordView.as_view(), name='change_password'),
     path('compte/reservation/<int:pk>/supprimer', views.DeleteTicketView.as_view(), name='delete_reservation'),
 ]

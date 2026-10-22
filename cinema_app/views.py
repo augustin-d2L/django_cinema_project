@@ -5,9 +5,9 @@ from django.views.generic.base import View
 from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import * # a changer
-from .forms import ContactForm, ReservationForm, RegisterForm, UserUpdateForm
+from .forms import ContactForm, ReservationForm, RegisterForm, UserUpdateForm, StyledPasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import login
+from django.contrib.auth import login, update_session_auth_hash
 import datetime
 from .constants import PRIX_BILLET
 from employee_app.mixins import EMPLOYEE_GROUPS
@@ -127,13 +127,7 @@ class AccountView(LoginRequiredMixin, View):
     login_url = 'login'
 
     def get(self, request):
-        form = UserUpdateForm(instance=request.user)
-        tickets = request.user.tickets.all().order_by('screening__screening_time')
-        return render(request, 'cinema_app/account.html', {
-            'form': form,
-            'tickets': tickets,
-            'now': timezone.now(),
-        })
+        return render(request, 'cinema_app/account.html', account_context(request))
 
     def post(self, request):
         form = UserUpdateForm(request.POST, instance=request.user)
@@ -142,11 +136,34 @@ class AccountView(LoginRequiredMixin, View):
             messages.add_message(request, messages.SUCCESS, _("Profil mis à jour."))
             return redirect('account')
 
-        tickets = request.user.tickets.all().order_by('screening__screening_time')
-        return render(request, 'cinema_app/account.html', {
-            'form': form,
-            'tickets': tickets,
-        })
+        return render(request, 'cinema_app/account.html', account_context(request, form=form))
+
+
+class ChangePasswordView(LoginRequiredMixin, View):
+    login_url = 'login'
+
+    def get(self, request):
+        return redirect('account')
+
+    def post(self, request):
+        password_form = StyledPasswordChangeForm(request.user, request.POST)
+        if password_form.is_valid():
+            user = password_form.save()
+            update_session_auth_hash(request, user)
+            messages.add_message(request, messages.SUCCESS, _("Mot de passe modifié avec succès."))
+            return redirect('account')
+
+        return render(request, 'cinema_app/account.html',
+                      account_context(request, password_form=password_form))
+
+def account_context(request, form=None, password_form=None):
+    return {
+        'form': form or UserUpdateForm(instance=request.user),
+        'password_form': password_form or StyledPasswordChangeForm(request.user),
+        'tickets': request.user.tickets.select_related('screening__movie', 'screening__cinema_room')
+                                       .order_by('screening__screening_time'),
+        'now': timezone.now(),
+    }
 
 
 class DeleteTicketView(LoginRequiredMixin, View):

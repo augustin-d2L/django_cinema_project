@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CinéApp 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-15 20:51-0400\n"
+"POT-Creation-Date: 2026-10-22 11:04-0400\n"
 "PO-Revision-Date: 2026-10-15 17:15-0400\n"
 "Last-Translator: Augustin Dellisse\n"
 "Language-Team: English\n"
@@ -32,7 +32,7 @@ msgstr "Time"
 msgid "Film"
 msgstr "Movie"
 
-#: .\cinema_app\forms.py:48 .\cinema_app\templates\cinema_app\account.html:65
+#: .\cinema_app\forms.py:48 .\cinema_app\templates\cinema_app\account.html:95
 msgid "Salle"
 msgstr "Room"
 
@@ -57,28 +57,36 @@ msgstr "My account"
 msgid "Gérez vos informations et vos réservations."
 msgstr "Manage your information and your bookings."
 
-#: .\cinema_app\templates\cinema_app\account.html:16
+#: .\cinema_app\templates\cinema_app\account.html:19
 msgid "Informations personnelles"
 msgstr "Personal information"
 
-#: .\cinema_app\templates\cinema_app\account.html:47
+#: .\cinema_app\templates\cinema_app\account.html:50
 msgid "Mettre à jour"
 msgstr "Update"
 
-#: .\cinema_app\templates\cinema_app\account.html:55
+#: .\cinema_app\templates\cinema_app\account.html:58
+msgid "Changer le mot de passe"
+msgstr "Change password"
+
+#: .\cinema_app\templates\cinema_app\account.html:75
+msgid "Modifier le mot de passe"
+msgstr "Update password"
+
+#: .\cinema_app\templates\cinema_app\account.html:85
 msgid "Mes réservations"
 msgstr "My bookings"
 
-#: .\cinema_app\templates\cinema_app\account.html:65
+#: .\cinema_app\templates\cinema_app\account.html:95
 #: .\cinema_app\templates\cinema_app\delete_ticket_confirm.html:12
 msgid "Siège"
 msgstr "Seat"
 
-#: .\cinema_app\templates\cinema_app\account.html:76
+#: .\cinema_app\templates\cinema_app\account.html:106
 msgid "Passée"
 msgstr "Past"
 
-#: .\cinema_app\templates\cinema_app\account.html:82
+#: .\cinema_app\templates\cinema_app\account.html:112
 msgid "Aucune réservation pour le moment."
 msgstr "No bookings yet."
 
@@ -236,31 +244,35 @@ msgstr "Fill out the form to book your screening."
 msgid "Confirmer la réservation"
 msgstr "Confirm booking"
 
-#: .\cinema_app\views.py:70
+#: .\cinema_app\views.py:65
 msgid "Ce siège est déjà réservé pour cette projection."
 msgstr "This seat is already reserved for this screening."
 
-#: .\cinema_app\views.py:73
+#: .\cinema_app\views.py:68
 msgid "Réservation bien effectuée"
 msgstr "Booking successfully made"
 
-#: .\cinema_app\views.py:90
+#: .\cinema_app\views.py:85
 msgid "Message bien envoyé"
 msgstr "Message successfully sent"
 
-#: .\cinema_app\views.py:125
+#: .\cinema_app\views.py:120
 msgid "Compte créé avec succès !"
 msgstr "Account created successfully!"
 
-#: .\cinema_app\views.py:147
+#: .\cinema_app\views.py:136
 msgid "Profil mis à jour."
 msgstr "Profile updated."
 
-#: .\cinema_app\views.py:168
+#: .\cinema_app\views.py:153
+msgid "Mot de passe modifié avec succès."
+msgstr "Password changed successfully."
+
+#: .\cinema_app\views.py:180
 msgid "Impossible d'annuler un billet pour une projection passée."
 msgstr "You cannot cancel a ticket for a past screening."
 
-#: .\cinema_app\views.py:172
+#: .\cinema_app\views.py:184
 msgid "Billet annulé."
 msgstr "Ticket cancelled."
 

@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Movie, CinemaRoom
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.utils.translation import gettext_lazy as _
 
 import datetime
@@ -118,3 +118,15 @@ class UserUpdateForm(forms.ModelForm):
                 'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
             }),
         }
+
+
+class StyledPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({
+                'class': 'w-full px-3 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cinema-red'
+            })
+        # Django place le curseur dans ce champ au chargement : on l'enlève,
+        # sinon la page de compte "saute" vers le formulaire de mot de passe
+        self.fields['old_password'].widget.attrs.pop('autofocus', None)
